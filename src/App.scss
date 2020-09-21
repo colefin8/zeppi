@@ -1,6 +1,7 @@
 @import './styling/mixins';
 @import './styling/variables';
 
+
 // GRID CLASSES
 @each $modifier , $breakpoint in $map-grid-props {
   @if($modifier == '') {
@@ -19,7 +20,7 @@
     }
   }
 }
-  
+
 .container {
   max-width: $grid__bp-xl * 1px;
   margin: 0 auto;
