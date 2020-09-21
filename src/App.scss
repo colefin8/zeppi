@@ -540,8 +540,24 @@
   }
 }
 
+// link styling
+.link {
+  @include button(none);
+  @include btn-size(.15rem, 0, .75rem, .12rem, 500);
+  @include btn-theme(transparent, transparent, $white-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center center;
+  &:hover {
+    border-bottom: solid .12rem currentColor;
+    cursor: pointer;
+    color: lighten($white-primary, 20%);
+    @include transition (all .3s);
+  }
+}
+
 // APP STYLING AND CLASSES
-.App {
+.App, .Welcome {
     width: 100%;
     height: 100%;
     background-color: $white-primary;
