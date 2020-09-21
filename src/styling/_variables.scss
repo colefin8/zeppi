@@ -9,42 +9,48 @@ $font-regular: 400;
 $font-medium: 500;
 $font-bold: 700;
 $font-black: 900;
+// FONT SIZES
+$headline: 4rem;
+$title: 2rem;
+$sub-title: 1rem;
+$phrase: .95rem;
+$body: .9rem;
+$caption: .75rem;
+
 
 // COLORS
-$input-color: #e6e6e6;
-$background-color: #e4e4e4;
-
 
 // BRAND COLORS
-$blue-primary: #ffffff;
-$blue-secondary: #ffffff;
+$blue-primary: #56A6EB;
+$blue-secondary: #64BAF8;
 
-$red-primary: #eb5424;
-$red-secondary: #ca5237;
+$red-primary: #FF3C3C;
+$red-second: #D02727;
+$red-dark: #A32928;
 
-$dark-shade: #33363B;
-$medium-shade: #7b7b7b;
-$light-shade: #eeeeee;
-$effect-color: rgba(255,255,255,0.30);
+$white-primary: #FFFFFF;
+$white-secondary: #f2f2f2;
 
+// APP COLORS
+$blue-gradient-bg: radial-gradient(#8FCFFF, #66BCFF);
+$font-color: #5e6c84;
 $success-color: #7ebc59;
 $warning-color: #ead251;
 $error-color: #b94040;
-
-// IMAGES
-$home-banner: url('../assets/bannerImages/homeBanner.jpeg');
 
 // GRID
 $grid__bp-sm: 576;
 $grid__bp-md: 768;
 $grid__bp-lg: 992;
 $grid__bp-xl: 1280;
-$grid__cols: 12;
+$grid__bp-xxl: 1440;
+$grid__cols: 24;
 
 $map-grid-props: (
         '': 0,
         '-sm': $grid__bp-sm,
         '-md': $grid__bp-md,
         '-lg': $grid__bp-lg,
-        '-xl': $grid__bp-xl
+        '-xl': $grid__bp-xl,
+        '-xxl': $grid__bp-xxl
 );
