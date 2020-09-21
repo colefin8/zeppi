@@ -1,5 +1,628 @@
+@import './styling/mixins';
+@import './styling/variables';
+
+// GRID CLASSES
+@each $modifier , $breakpoint in $map-grid-props {
+  @if($modifier == '') {
+    $modifier: '-xs';
+  }
+  @include create-mq($breakpoint - 1, 'max') {
+    .hidden#{$modifier}-down {
+      display: none !important;
+      @include transition (all 2s);
+    }
+  }
+  @include create-mq($breakpoint, 'min') {
+    .hidden#{$modifier}-up {
+      display: none !important;
+      @include transition (all 2s);
+    }
+  }
+}
+  
+.container {
+  max-width: $grid__bp-xl * 1px;
+  margin: 0 auto;
+  &--fluid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    max-width: 100%;
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+    &-nowrap {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+    }
+  }
+  @each $modifier , $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $grid__cols, $breakpoint);
+  }
+}
+  
+// FONT CLASSES BELOW ------
+.headline {
+  font-size: $headline;
+  font-weight: $font-light;
+  font-family: $lato;
+  color: $font-color;
+}
+
+.title {
+  font-size: $title;
+  font-weight: $font-light;
+  font-family: $lato;
+  color: $font-color;
+  &-blue {
+    @extend .title;
+    color: $blue-primary;
+  }
+}
+
+.subtitle {
+  font-size: $sub-title;
+  font-weight: $font-light;
+  font-family: $lato;
+  color: $font-color;
+  &-blue {
+    @extend .subtitle;
+    color: $blue-primary;
+  }
+}
+
+.phrase {
+  font-size: $phrase;
+  font-weight: $font-light;
+  font-family: $roboto;
+  color: $font-color;
+  &-blue {
+    @extend .phrase;
+    color: $blue-primary;
+    font-weight: $font-regular;
+  }
+  &-white {
+    @extend .phrase;
+    color: $white-primary;
+    font-weight: $font-regular;
+  }
+}
+
+.body {
+  font-size: $body;
+  font-weight: $font-regular;
+  font-family: $roboto;
+  color: $font-color;
+}
+
+.caption {
+  font-size: $caption;
+  font-weight: $font-regular;
+  font-family: $roboto;
+  color: $font-color;
+  &-blue {
+    @extend .caption;
+    color: $blue-primary;
+  }
+  &-error {
+    @extend .caption;
+    color: $error-color;
+  }
+  &-warning {
+    @extend .caption;
+    color: $warning-color;
+  }
+  &-success {
+    @extend .caption;
+    color: $success-color;
+  }
+  &-white {
+    @extend .caption;
+    color: $white-primary;
+  }
+}
+
+// UTILITY CLASSES BELOW---------
+// Backgrounds
+.bg {
+  &-success {
+    background-color: rgba(43, 192, 2, 0.9);
+  }
+  &-error {
+    background-color: rgba(219, 0, 26, 0.91);
+  }
+  &-warning {
+    background-color: rgba(245, 192, 0, 0.91);
+  }
+}
+
+// easy to use REM sizes
+.size {
+  &-h {
+    &-1 {
+      height: 1rem;
+    }
+    &-2 {
+      height: 2rem;
+    }
+    &-3 {
+      height: 3rem;
+    }
+    &-4 {
+      height: 4rem;
+    }
+    &-5 {
+      height: 5rem;
+    }
+    &-6 {
+      height: 6rem;
+    }
+  }
+  &-w {
+    &-1 {
+      width: 1rem;
+    }
+    &-2 {
+      width: 2rem;
+    }
+    &-3 {
+      width: 3rem;
+    }
+    &-4 {
+      width: 4rem;
+    }
+    &-5 {
+      width: 5rem;
+    }
+    &-6 {
+      width: 6rem;
+    }
+  }
+}
+
+// Margin
+.m {
+  &-a {
+    &-1 {
+      margin: 1rem;
+    }
+    &-2 {
+      margin: 2rem;
+    }
+    &-3 {
+      margin: 3rem;
+    }
+  }
+  &-t {
+    &-25 {
+      margin-top: .25rem;
+    }
+    &-50 {
+      margin-top: .5rem;
+    }
+    &-1 {
+      margin-top: 1rem;
+    }
+    &-2 {
+      margin-top: 2rem;
+    }
+    &-3 {
+      margin-top: 3rem;
+    }
+  }
+  &-b {
+    &-50 {
+      margin-bottom: .5rem;
+    }
+    &-1 {
+      margin-bottom: 1rem;
+    }
+    &-2 {
+      margin-bottom: 2rem;
+    }
+  }
+  &-v {
+    &-auto {
+      margin: auto 0;
+    }
+    &-1 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    &-2 {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  &-l {
+    &-25 {
+      margin-left: .25rem;
+    }
+    &-50 {
+      margin-left: .5rem;
+    }
+    &-1 {
+      margin-left: 1rem;
+    }
+    &-1p {
+      margin-left: 1px;
+    }
+    &-2 {
+      margin-left: 2rem;
+    }
+  }
+  &-r {
+    &-1 {
+      margin-right: 1rem;
+    }
+    &-1p {
+      margin-right: 1px;
+    }
+    &-2 {
+      margin-right: 2rem;
+    }
+    &-2p {
+      margin-right: 2px;
+    }
+  }
+  &-h {
+    &-auto {
+      margin: 0 auto;
+    }
+    &-1 {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    &-2 {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
+}
+
+// Padding
+.p {
+  &-a {
+    &-1 {
+      padding: 1rem;
+    }
+    &-2 {
+      padding: 1rem;
+    }
+  }
+  &-t {
+    &-1 {
+      padding-top: 1rem;
+    }
+    &-2 {
+      padding-top: 2rem;
+    }
+  }
+  &-b {
+    &-1 {
+      padding-bottom: 1rem;
+    }
+    &-2 {
+      padding-bottom: 2rem;
+    }
+  }
+  &-v {
+    &-1 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    &-2 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+  &-l {
+    &-25 {
+      padding-left: .25rem;
+    }
+    &-50 {
+      padding-left: .5rem;
+    }
+    &-1 {
+      padding-left: 1rem;
+    }
+    &-2 {
+      padding-left: 2rem;
+    }
+  }
+  &-r {
+    &-1 {
+      padding-right: 1rem;
+    }
+    &-2 {
+      padding-right: 2rem;
+    }
+  }
+  &-h {
+    &-1 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    &-2 {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+// General Flexbox 
+.flex {
+  display: flex;
+  &-column {
+    @extend .flex;
+    flex-direction: column;
+  }
+  &-row {
+    @extend .flex;
+    flex-direction: row;
+    
+  }
+}
+
+// flexbox aligns
+.justify {
+  &-end {
+    justify-content: flex-end;
+  }
+  &-start {
+    justify-content: flex-start;
+  }
+  &-center {
+    justify-content: center;
+  }
+  &-around {
+    justify-content: space-around;
+  }
+  &-between {
+    justify-content: space-between;
+  }
+  &-evenly {
+    justify-content: space-evenly;
+  }
+}
+
+.align {
+  &-end {
+    align-content: flex-end;
+  }
+  &-start {
+    align-content: flex-start;
+  }
+  &-center {
+    align-content: center;
+  }
+  &-around {
+    align-content: space-around;
+  }
+  &-between {
+    align-content: space-between;
+  }
+  &-evenly {
+    align-content: space-evenly;
+  }
+  &-text {
+    text-align: center;
+  }
+}
+
+// box radius
+.radius {
+  &-25 {
+    border-radius: .25rem;
+  }
+  &-50 {
+    border-radius: .5rem;
+  }
+  &-1 {
+    border-radius: 1rem;
+  }
+  &-2 {
+    border-radius: 2rem;
+  }
+  &-3 {
+    border-radius: 3rem;
+  }
+  &-4 {
+    border-radius: 4rem;
+  }
+  &-5 {
+    border-radius: 5rem;
+  }
+}
+
+// Hide Element
+.hidden {
+  display: none;
+  &-trans {
+    visibility: hidden;  
+    @extend .disabled;
+  }
+}
+
+.show {
+  animation: spin-half ease-in-out 2s 1;
+}
+
+// Disable Element
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// ANIMATION
+.rotate {
+  animation: spin-animation ease-in-out 2s infinite;
+}
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+// INPUTS
+.input {
+  padding: .75rem;
+  border: solid 1px $blue-primary;
+  border-radius: 3px;
+  background: $white-secondary;
+  outline: 0;
+  &.valid {
+    border-color: $success-color;
+  }
+  &.invalid {
+    border-color: $error-color;
+  }
+}
+
+// BUTTONS
+.btn {
+  @include button(uppercase);
+  &-sm {
+    @extend .btn;
+    @include btn-size(.15rem, .35rem 1rem .35rem 1rem, .75rem, .07rem, 400);
+    &-white {
+      @extend .btn-std-sm;
+      @include btn-theme($white-primary, $white-primary, $blue-primary);
+    }
+    &-blue {
+      @extend .btn-std-sm;
+      @include btn-theme($blue-primary, $blue-primary, $white-primary);
+    }
+    &-red {
+      @extend .btn-std-sm;
+      @include btn-theme($red-primary, $red-primary, $white-primary);
+    }
+  }
+  &-md {
+    @extend .btn;
+    @include btn-size(.15rem, .5rem 1.25rem .5rem 1.25rem, .75rem, .08rem, 400);
+    &-white {
+      @extend .btn-std-md;
+      @include btn-theme($white-primary, $white-primary, $blue-primary);
+    }
+    &-blue {
+      @extend .btn-std-md;
+      @include btn-theme($blue-primary, $blue-primary, $white-primary);
+    }
+    &-red {
+      @extend .btn-std-md;
+      @include btn-theme($red-primary, $red-primary, $white-primary);
+    }
+  }
+  &-lg {
+    @extend .btn;
+    @include btn-size(.15rem, .85rem 1.5rem .85rem 1.5rem, .75rem, .10rem, 400);
+    &-white {
+      @extend .btn-std-lg;
+      @include btn-theme($white-primary, $white-primary, $blue-primary);
+    }
+    &-blue {
+      @extend .btn-std-lg;
+      @include btn-theme($blue-primary, $blue-primary, $white-primary);
+    }
+    &-red {
+      @extend .btn-std-lg;
+      @include btn-theme($red-primary, $red-primary, $white-primary);
+    }
+  }
+}
+
+
+
+// Custom Styling to get clouds to work but this will
+// be redone with design system extend styling to be
+// universal
 .App {
     width: 100%;
     height: 100%;
-    background-color: gray;
+    background-color: $white-primary;
+}
+
+.Navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    @extend .container__row;
+    justify-content: space-between;
+}
+
+.ZeppiText {
+    @extend .container__col-md-3;
+    @extend .container__col-md-offset-1;
+    @extend .container__col-8;
+    @extend .container__col-offset-8;
+    margin-top: 1rem;
+}
+
+.ButtonContainer {
+    @extend .container__col-md-14;
+    @extend .container__col-md-offset-1;
+    @extend .container__col-24;
+}
+
+.LoginButton {
+    background-color: $white-primary;
+    border-radius: .45rem;
+    font-size: .9rem;
+    padding: .60rem;
+    text-align: center;
+    font-family: $roboto;
+    color: $blue-primary;
+    @extend .container__col-md-3;
+    @extend .container__col-md-offset-14;
+    @extend .container__col-8;
+    @extend .container__col-offset-8;
+    margin-top: 1.75rem;
+}
+
+.SignupButton {
+    background-color: $white-primary;
+    border-radius: .45rem;
+    font-size: .9rem;
+    padding: .60rem;
+    text-align: center;
+    font-family: $roboto;
+    color: $blue-primary;
+    @extend .container__col-md-3;
+    @extend .container__col-md-offset-1;
+    @extend .container__col-8;
+    @extend .container__col-offset-8;
+    margin-top: 1.75rem;
+}
+
+.HeaderLanding {
+    width: 100%;
+    background: $blue-gradient-bg;
+}
+
+.PaperPlanes {
+    @extend .container__col-md-5;
+    @extend .container__col-md-offset-4;
+    @extend .container__col-10;
+    @extend .container__col-offset-2;
+    margin-top: 100px;
+}
+
+.CloudSpan {
+    @extend .container__row;
+    
+}
+
+.RightBelowCloud {
+    height: 40%;
+    width: 100%;
+    background-color: $white-primary;
 }
