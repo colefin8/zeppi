@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styling/components/Welcome.scss';
-
+import {Link} from 'react-router-dom'
 import CloudSpan from '../assets/Clouds/CloudSpan/CloudSpan';
 import PaperPlanes from '../assets/Planes/PaperPlanes/PaperPlanes';
 import Zeppi from '../assets/ZeppiLogo/Zeppi/Zeppi';
@@ -14,10 +14,10 @@ function Welcome() {
                     <div className="header-buttons">
                         <div className="container__row">
                         <div className="login-button">
-                            <p>LOGIN</p>
+                            <Link to="/login" className="link"><p>LOGIN</p></Link>
                         </div>
                         <div className="signup-button">
-                            <p>SIGNUP</p>
+                        <Link to="/signup" className="link"><p>SIGNUP</p></Link>
                         </div>
                         </div>
                     </div>

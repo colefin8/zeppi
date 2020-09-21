@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom'
 import {loginUser} from '../redux/AuthReducer';
 import axios from 'axios';
 
 function Signup() {
 
+    const history = useHistory()
     const dispatch = useDispatch()
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -18,6 +20,7 @@ function Signup() {
         if(password === confirm){
             axios.post('/auth/register', {username, firstName, lastName, phone, email, password}).then(res => {
                 dispatch(loginUser(res.data))
+                history.push('/dash')
             }).catch(err => {
                 console.log(err)
                 alert('Could not register with provided information.')
@@ -28,7 +31,7 @@ function Signup() {
     }
 
     return (
-        <div>
+        <div className="signup-container">
             <div></div>
             <h1>ACCOUNT SIGNUP</h1>
             <input

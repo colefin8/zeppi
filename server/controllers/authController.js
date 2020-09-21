@@ -3,7 +3,7 @@ module.exports = {
     register: async (req, res) => {
         console.log('BODY!!', req.body)
         const db = req.app.get('db');
-        const {user_name, first_name, last_name, phone_number, email, password} = req.body;
+        const {username, firstName, lastName, phone, email, password} = req.body;
 
         const existingUser = await db.check_user(email)
         if (existingUser[0]) {
@@ -14,7 +14,7 @@ module.exports = {
         console.log('PASSWORD!',password)
         const hash = bcrypt.hashSync(password, salt)
         console.log('HASH?', hash)
-        const newUser = await db.create_user([user_name, first_name, last_name, phone_number, email, hash])
+        const newUser = await db.create_user([username, firstName, lastName, phone, email, hash])
         req.session.user = {
         userId: newUser[0].user_id,
         userName: newUser[0].user_name,
@@ -28,8 +28,8 @@ module.exports = {
 },
     login: async (req, res)=> {
         const db = req.app.get('db');
-        const{user_name, email, password}= req.body;
-        console.log("user_name/email", user_name, email)
+        const{email, password}= req.body;
+        console.log("email", email)
         const user= await db.check_user(email)
 console.log("user", user)
         if(!user[0]){
@@ -39,10 +39,10 @@ console.log("user", user)
             if(authenticated){
                 req.session.user={
                     userId: user[0].user_id,
-                    userName: user[0].user_name,
+                    username: user[0].user_name,
                     firstName: user[0].first_name,
                     lastName: user[0].last_name,
-                    phoneNumber: user[0].phone_number,
+                    phone: user[0].phone_number,
                     email: user[0].email,
                     message: user[0].message
 
@@ -55,10 +55,19 @@ console.log("user", user)
  },
     logout: (req, res) => {
         req.session.destroy();
-        res.status(200).send('you are logout!');
+        console.log("logged out")
+        res.status(200).send('You are logged out!');
     },
     test: (req, res)=>{
         console.log(req.body)
         res.status(200).send('TEST!');
+    },
+    getUser: (req, res) => {
+        if(req.session.user){
+            res.status(200).send(req.session.user)
+        } else {
+            res.status(200).send('No active session at this time.')
+        }
     }
+    
 }
