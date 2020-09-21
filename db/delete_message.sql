@@ -1,5 +1,6 @@
-DELETE FROM message
-WHERE  messageId = $1;
+DELETE FROM messages
+WHERE  message_id = $1;
 
-SELECT * FROM message
-WHERE userId= $2;
+
+-- SELECT * FROM messages
+-- WHERE receiver = $1
