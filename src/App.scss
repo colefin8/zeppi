@@ -494,15 +494,15 @@
     @extend .btn;
     @include btn-size(.15rem, .35rem 1rem .35rem 1rem, .75rem, .07rem, 400);
     &-white {
-      @extend .btn-std-sm;
+      @extend .btn-sm;
       @include btn-theme($white-primary, $white-primary, $blue-primary);
     }
     &-blue {
-      @extend .btn-std-sm;
+      @extend .btn-sm;
       @include btn-theme($blue-primary, $blue-primary, $white-primary);
     }
     &-red {
-      @extend .btn-std-sm;
+      @extend .btn-sm;
       @include btn-theme($red-primary, $red-primary, $white-primary);
     }
   }
@@ -510,15 +510,15 @@
     @extend .btn;
     @include btn-size(.15rem, .5rem 1.25rem .5rem 1.25rem, .75rem, .08rem, 400);
     &-white {
-      @extend .btn-std-md;
+      @extend .btn-md;
       @include btn-theme($white-primary, $white-primary, $blue-primary);
     }
     &-blue {
-      @extend .btn-std-md;
+      @extend .btn-md;
       @include btn-theme($blue-primary, $blue-primary, $white-primary);
     }
     &-red {
-      @extend .btn-std-md;
+      @extend .btn-md;
       @include btn-theme($red-primary, $red-primary, $white-primary);
     }
   }
@@ -526,103 +526,110 @@
     @extend .btn;
     @include btn-size(.15rem, .85rem 1.5rem .85rem 1.5rem, .75rem, .10rem, 400);
     &-white {
-      @extend .btn-std-lg;
+      @extend .btn-lg;
       @include btn-theme($white-primary, $white-primary, $blue-primary);
     }
     &-blue {
-      @extend .btn-std-lg;
+      @extend .btn-lg;
       @include btn-theme($blue-primary, $blue-primary, $white-primary);
     }
     &-red {
-      @extend .btn-std-lg;
+      @extend .btn-lg;
       @include btn-theme($red-primary, $red-primary, $white-primary);
     }
   }
 }
 
-
-
-// Custom Styling to get clouds to work but this will
-// be redone with design system extend styling to be
-// universal
+// APP STYLING AND CLASSES
 .App {
     width: 100%;
     height: 100%;
     background-color: $white-primary;
 }
 
-.Navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    @extend .container__row;
-    justify-content: space-between;
+
+// Custom Styling to get clouds to work but this will
+// be redone with design system extend styling to be
+// universal
+// WELCOME STYLING AND CLASS COMPONENTS
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @extend .container__row;
+  justify-content: space-between;
+  @media(max-width: 768px) {
+    background-color: $blue-gradient-bg;
+  }
+  @media(min-width: 768px){
+    background-color: transparent;
+  }
 }
 
-.ZeppiText {
-    @extend .container__col-md-3;
-    @extend .container__col-md-offset-1;
-    @extend .container__col-8;
-    @extend .container__col-offset-8;
-    margin-top: 1rem;
+.zeppi-text {
+  @extend .container__col-md-3;
+  @extend .container__col-md-offset-1;
+  @extend .container__col-8;
+  @extend .container__col-offset-8;
+  margin-top: 1rem;
 }
 
-.ButtonContainer {
-    @extend .container__col-md-14;
-    @extend .container__col-md-offset-1;
-    @extend .container__col-24;
+.header-buttons{
+  @extend .container__col-md-14;
+  @extend .container__col-md-offset-1;
+  @extend .container__col-24;
 }
 
-.LoginButton {
-    background-color: $white-primary;
-    border-radius: .45rem;
-    font-size: .9rem;
-    padding: .60rem;
-    text-align: center;
-    font-family: $roboto;
-    color: $blue-primary;
-    @extend .container__col-md-3;
-    @extend .container__col-md-offset-14;
-    @extend .container__col-8;
-    @extend .container__col-offset-8;
-    margin-top: 1.75rem;
+.login-button {
+  background-color: $white-primary;
+  border-radius: .45rem;
+  font-size: .9rem;
+  padding: .60rem;
+  text-align: center;
+  font-family: $roboto;
+  color: $blue-primary;
+  @extend .container__col-md-3;
+  @extend .container__col-md-offset-14;
+  @extend .container__col-8;
+  @extend .container__col-offset-8;
+  margin-top: 1.75rem;
 }
 
-.SignupButton {
-    background-color: $white-primary;
-    border-radius: .45rem;
-    font-size: .9rem;
-    padding: .60rem;
-    text-align: center;
-    font-family: $roboto;
-    color: $blue-primary;
-    @extend .container__col-md-3;
-    @extend .container__col-md-offset-1;
-    @extend .container__col-8;
-    @extend .container__col-offset-8;
-    margin-top: 1.75rem;
+.signup-button {
+  background-color: $white-primary;
+  border-radius: .45rem;
+  font-size: .9rem;
+  padding: .60rem;
+  text-align: center;
+  font-family: $roboto;
+  color: $blue-primary;
+  @extend .container__col-md-3;
+  @extend .container__col-md-offset-1;
+  @extend .container__col-8;
+  @extend .container__col-offset-8;
+  margin-top: 1.75rem;
 }
 
-.HeaderLanding {
-    width: 100%;
-    background: $blue-gradient-bg;
+.preview-container {
+  width: 100%;
+  background: $blue-gradient-bg;
 }
 
-.PaperPlanes {
-    @extend .container__col-md-5;
-    @extend .container__col-md-offset-4;
-    @extend .container__col-10;
-    @extend .container__col-offset-2;
-    margin-top: 100px;
+.paper-planes {
+  @extend .container__col-md-5;
+  @extend .container__col-md-offset-4;
+  @extend .container__col-10;
+  @extend .container__col-offset-2;
+  margin-top: 100px;
 }
 
 .CloudSpan {
-    @extend .container__row;
-    
+  @extend .container__row;
+  
 }
 
 .RightBelowCloud {
-    height: 40%;
-    width: 100%;
-    background-color: $white-primary;
+  height: 40%;
+  width: 100%;
+  background-color: $white-primary;
 }
