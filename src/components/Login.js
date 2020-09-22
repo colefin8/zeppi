@@ -14,7 +14,7 @@ function Login() {
     const handleLogin = () => {
         axios.post('/auth/login', {email, password}).then(res => {
             dispatch(loginUser(res.data))
-            history.push('/dash')
+            history.push('/map')
         }).catch(err => {
             console.log(err)
             alert('Could not log in.')
