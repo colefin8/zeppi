@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function ViewMessage() {
     return (
-        <div></div>
+        <div>I'm a complete message!</div>
     )
 }
 

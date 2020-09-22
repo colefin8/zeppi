@@ -19,9 +19,11 @@ function Navbar() {
     return (
         <div>
             <div></div>
-            <div>
-                <h2><Link to="/dash" className="link">DASHBOARD</Link></h2>
+            <div className="nav">
+                <h2><Link to="/loot" className="link">MY LOOT</Link></h2>
+                <h2><Link to="/drops" className="link">MY DROPS</Link></h2>
                 <h2><Link to="/map" className="link">MAP</Link></h2>
+                <h2><Link to="/friends" className="link">MY FRIENDS</Link></h2>
                 <h2><Link to="/account" className="link">ACCOUNT</Link></h2>
                 <button onClick={handleLogout}>LOG OUT</button>
             </div>
