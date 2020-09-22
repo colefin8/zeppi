@@ -13,12 +13,8 @@ function Welcome() {
                     <Zeppi className="zeppi-text"/>
                     <div className="header-buttons">
                         <div className="container__row">
-                        <div className="login-button">
-                            <Link to="/login" className="link"><p>LOGIN</p></Link>
-                        </div>
-                        <div className="signup-button">
-                        <Link to="/signup" className="link"><p>SIGNUP</p></Link>
-                        </div>
+                            <Link to="/login" className="login-button">LOGIN</Link>
+                            <Link to="/signup" className="signup-button">SIGNUP</Link>
                         </div>
                     </div>
                 </div>

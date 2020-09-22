@@ -491,9 +491,10 @@
 // BUTTONS
 .btn {
   @include button(uppercase);
+  text-decoration: none;
   &-sm {
     @extend .btn;
-    @include btn-size(.15rem, .35rem 1rem .35rem 1rem, .75rem, .07rem, 400);
+    @include btn-size(.15rem, .35rem .5rem .35rem .5rem, .75rem, .07rem, 400);
     &-white {
       @extend .btn-sm;
       @include btn-theme($white-primary, $white-primary, $blue-primary);
@@ -543,14 +544,13 @@
 
 // link styling
 .link {
-  @include button(none);
-  @include btn-size(.15rem, 0, .75rem, .12rem, 500);
-  @include btn-theme(transparent, transparent, $white-primary);
+  color: $white-primary;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center center;
+  height: 100%;
+  width: 100%;
   &:hover {
-    border-bottom: solid .12rem currentColor;
     cursor: pointer;
     color: lighten($white-primary, 20%);
     @include transition (all .3s);
@@ -563,6 +563,7 @@
     height: 100%;
     background-color: $white-primary;
 }
+
 
 
 // Custom Styling to get clouds to work but this will
@@ -598,13 +599,7 @@
 }
 
 .login-button {
-  background-color: $white-primary;
-  border-radius: .45rem;
-  font-size: .9rem;
-  padding: .60rem;
-  text-align: center;
-  font-family: $roboto;
-  color: $blue-primary;
+  @extend .btn-sm-white;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-14;
   @extend .container__col-8;
@@ -613,13 +608,7 @@
 }
 
 .signup-button {
-  background-color: $white-primary;
-  border-radius: .45rem;
-  font-size: .9rem;
-  padding: .60rem;
-  text-align: center;
-  font-family: $roboto;
-  color: $blue-primary;
+  @extend .btn-sm-white;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-1;
   @extend .container__col-8;
