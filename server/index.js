@@ -3,6 +3,7 @@ const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
 const authCtrl= require('./controllers/authController');
+const msgCtrl= require('./controllers/messageController');
 
 const app = express();
 
@@ -35,6 +36,9 @@ app.post('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
 
 //message
+app.post('/msg/newMsg', msgCtrl.newMessage)
+app.delete('/msg/deleteMsg/:message_id', msgCtrl.deleteMsg)
+app.get('/msg/allMsgs/:message_id', msgCtrl.getMsgs)
 
 
 app.listen(SERVER_PORT, () => console.log(`Connected to port ${SERVER_PORT}`));
