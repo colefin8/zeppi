@@ -40,5 +40,7 @@ app.post('/msg/newMsg', msgCtrl.newMessage)
 app.delete('/msg/deleteMsg/:message_id', msgCtrl.deleteMsg)
 app.get('/msg/allMsgs/:message_id', msgCtrl.getMsgs)
 
+//
+
 
 app.listen(SERVER_PORT, () => console.log(`Connected to port ${SERVER_PORT}`));

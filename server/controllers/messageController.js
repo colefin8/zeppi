@@ -2,11 +2,13 @@ module.exports = {
     newMessage:(req,res)=>{
         console.log('BODY!!', req.body)
         const db = req.app.get('db');
-        const {message, sender, receiver } = req.body;
+        const {message, sender, receiver, lat, long} = req.body;
         db.create_message([
+            message,
             sender,
             receiver,
-            message
+            lat,
+            long
         ]).then(message=>{
             res.status(200).send(message)
         }).catch(err => {console.log(err)});
