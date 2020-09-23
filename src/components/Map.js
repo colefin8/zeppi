@@ -1,6 +1,7 @@
 import React from "react";
 import LeafletMap from './LeafletMap';
 
+
 const MainMap = (props) => {
 
   return (
@@ -9,5 +10,4 @@ const MainMap = (props) => {
       </div>
   );
 }
-
 export default MainMap;

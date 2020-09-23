@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {loginUser} from '../redux/AuthReducer';
+import {loginUser} from '../redux/authReducer';
 import axios from 'axios';
 import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
 
@@ -15,7 +15,7 @@ function Login() {
     const handleLogin = () => {
         axios.post('/auth/login', {email, password}).then(res => {
             dispatch(loginUser(res.data))
-            history.push('/dash')
+            history.push('/map')
         }).catch(err => {
             console.log(err)
             alert('Could not log in.')
