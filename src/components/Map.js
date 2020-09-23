@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import LeafletMap from './LeafletMap';
 
-function Map() {
-    return (
-        <div></div>
-    )
+const MainMap = (props) => {
+
+  return (
+      <div className="MainMap">
+        <LeafletMap/>
+      </div>
+  );
 }
 
-export default Map;
+export default MainMap;

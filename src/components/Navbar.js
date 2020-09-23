@@ -17,7 +17,7 @@ function Navbar() {
     }
 
     return (
-        <div>
+        <div className="Navbar">
             <div></div>
             <div>
                 <h2><Link to="/dash" className="link">DASHBOARD</Link></h2>

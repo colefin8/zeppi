@@ -20,7 +20,10 @@ function Welcome() {
                 </div>
             </div>
             <div className="preview-container">
-                <div className="container__row">
+            <div className="container__row TopPageDiv">
+                </div>
+
+                <div className="container__row size-h-3">
                     <PaperPlanes className="paper-planes"/>
                 </div>
                 <CloudSpan className="CloudSpan"/>
