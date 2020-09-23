@@ -8,6 +8,8 @@ import MapView from './components/Map'
 import Account from './components/Account'
 import Signup from './components/Signup'
 import Welcome from './components/Welcome'
+import ViewMessage from './components/ViewMessage'
+import NewMessage from './components/NewMessage'
 
 export default (
     <Switch>
@@ -19,5 +21,7 @@ export default (
         <Route path="/friends" component={MyFriends}/>
         <Route path="/map" component={MapView}/>
         <Route path="/signup" component={Signup}/>
+        <Route path="/viewMessage" component={ViewMessage}/>
+        <Route path="/newMessage" component={NewMessage}/>
     </Switch>
 )
