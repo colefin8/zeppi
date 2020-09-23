@@ -1,2 +1,2 @@
 SELECT * FROM messages
-WHERE receiver = $1;
+WHERE message_id = $1;

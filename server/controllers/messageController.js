@@ -24,14 +24,20 @@ module.exports = {
             res.status(200).send(message)
         }).catch(err=>{console.log(err)});
     },
-    getMsg:(req, res)=>{
-        console.log('REQ PARAMS?', req.params)
+    getLoot:(req, res)=>{
         const db = req.app.get('db');
         const { userId } = req.params
-        console.log("userId", userId)
-        db.user_message([userId]).then(message=>{
+        db.message_recipient([userId]).then(message=>{
             res.status(200).send(message)
         }).catch(err=>{console.log(err)});
 
+    },
+    getMsg:(req, res)=>{
+        const db = req.app.get('db');
+        const {lootId} = req.params
+        console.log(lootId)
+        db.user_message([lootId]).then(message => {
+            res.status(200).send(message[0])
+        }).catch(err => console.log(err))
     }
 }

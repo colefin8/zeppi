@@ -1,7 +1,7 @@
 const initialState = {
     loot: [],
     drops: [],
-    message: {}
+    viewMessage: {}
 }
 
 const GET_LOOT = 'GET_LOOT'
@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action){
         case GET_DROPS:
             return {...state, drops: payload}
         case GET_MESSAGE:
-            return {...state, message: payload}
+            return {...state, viewMessage: payload}
         default:
             return state
     }
