@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom'
-import {loginUser} from '../redux/AuthReducer';
+import {loginUser} from '../redux/authReducer';
 import axios from 'axios';
 
 function Signup() {
