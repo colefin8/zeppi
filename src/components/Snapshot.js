@@ -1,8 +1,13 @@
 import React from 'react';
 
-function Snapshot() {
+function Snapshot(props) {
+    const {message_id, sender, lat, long} = props.loot
     return (
-        <div>I'm a message preview!</div>
+        <div>
+            <h1>{sender}</h1>
+            <h2>{lat}, {long}</h2>
+            <button onClick={() => props.view(message_id)}>VIEW MESSAGE</button>
+        </div>
     )
 }
 

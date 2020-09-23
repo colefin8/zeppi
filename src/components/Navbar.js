@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import {logoutUser} from '../redux/AuthReducer';
+import {logoutUser} from '../redux/authReducer';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 

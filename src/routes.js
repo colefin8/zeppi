@@ -22,7 +22,7 @@ export default (
         <Route path="/friends" component={MyFriends}/>
         <Route path="/map" component={MapView}/>
         <Route path="/signup" component={Signup}/>
-        <Route path="/viewMessage" component={ViewMessage}/>
+        <Route path="/viewMessage/:lootId" component={ViewMessage}/>
         <Route path="/newMessage" component={NewMessage}/>
     </Switch>
 )
