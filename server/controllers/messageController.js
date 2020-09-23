@@ -24,12 +24,12 @@ module.exports = {
             res.status(200).send(message)
         }).catch(err=>{console.log(err)});
     },
-    getMsgs:(req, res)=>{
+    getMsg:(req, res)=>{
         console.log('REQ PARAMS?', req.params)
         const db = req.app.get('db');
-        const { message_id } = req.params
-        console.log("message_id", message_id)
-        db.getAll_messages([message_id]).then(message=>{
+        const { userId } = req.params
+        console.log("userId", userId)
+        db.user_message([userId]).then(message=>{
             res.status(200).send(message)
         }).catch(err=>{console.log(err)});
 

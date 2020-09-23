@@ -38,7 +38,7 @@ app.get('/auth/user', authCtrl.getUser)
 //message
 app.post('/msg/newMsg', msgCtrl.newMessage)
 app.delete('/msg/deleteMsg/:message_id', msgCtrl.deleteMsg)
-app.get('/msg/allMsgs/:message_id', msgCtrl.getMsgs)
+app.get('/msg/userMsg/:userId', msgCtrl.getMsg)
 
 //
 
