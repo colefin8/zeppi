@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     axios.get('/auth/user').then(res => {
       console.log(res.data)
-      dispatchEvent(getUser(res.data))
+      dispatch(getUser(res.data))
     }).catch(err => console.log(err))
   }, [dispatch])
 
