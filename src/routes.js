@@ -11,6 +11,7 @@ import Welcome from './components/Welcome'
 import ViewMessage from './components/ViewMessage'
 import NewMessage from './components/NewMessage'
 
+
 export default (
     <Switch>
         <Route exact path="/" component={Welcome}/>

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function ViewMessage() {
 
+
     function success(pos) {
         var crd = pos.coords;
 
@@ -14,8 +15,11 @@ function ViewMessage() {
     navigator.geolocation.getCurrentPosition(success);
     console.log('what is the location!!', success)
 
+
     return (
         <div>I'm a complete message!</div>
+        
+
     )
 }
 
