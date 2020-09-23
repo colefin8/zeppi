@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {loginUser} from '../redux/authReducer';
 import axios from 'axios';
+import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
 
 function Login() {
 
@@ -22,19 +23,29 @@ function Login() {
     }
 
     return (
-        <div>
-            <div></div>
-            <h1>LOGIN TO YOUR ACCOUNT</h1>
-            <input 
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}></input>
-            <input 
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}></input>
-            <button onClick={handleLogin}>LOGIN</button>
-            <h2>Forgot password?</h2>
+        <div className="Login">
+            <div className="LoginForm">
+            <div className="container__row">
+   
+                <div className="AuthLogo"><ZeppiCloud/></div>
+                
+                
+                <h1 className="subtitle-white container__col-12">LOGIN TO YOUR ACCOUNT</h1>
+
+                <input 
+                    className="input container__col-12"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}></input>
+                <input 
+                    className="input container__col-12"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}></input>
+                <button className="container__col-12" onClick={handleLogin}>LOGIN</button>
+                <h2 className="container__col-12">Forgot password?</h2>
+            </div>
+            </div>
         </div>
     )
 }

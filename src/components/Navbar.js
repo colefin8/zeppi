@@ -17,7 +17,7 @@ function Navbar() {
     }
 
     return (
-        <div>
+        <div className="Navbar">
             <div></div>
             <div className="nav">
                 <h2><Link to="/loot" className="link">MY LOOT</Link></h2>

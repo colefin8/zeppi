@@ -1,8 +1,8 @@
-import React, {useEffect, useSelector} from 'react';
-import {useDispatch} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Snapshot from './Snapshot';
-import {getLoot} from '../redux/messageReducer';
+import {getLoot, getMessage} from '../redux/messageReducer';
 import axios from 'axios';
 
 function MyLoot() {
@@ -21,6 +21,10 @@ function MyLoot() {
     }, [dispatch, userId])
 
     const view = (lootId) => {
+        axios.get(`/msg/viewMsg/${lootId}`).then(res => {
+            dispatch(getMessage(res.data))
+        }).catch(err => console.log(err))
+
         history.push(`/viewMessage/${lootId}`)
     }
 

@@ -1,23 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux'
 // import axios from 'axios';
 
 function ViewMessage() {
 
-
+    const {viewMessage} = useSelector((state) => state.msgReducer)
+    const {message, lat, long, sender, receiver} = viewMessage
+    const [match, setMatch] = useState(false)
+    const [crd, setCrd] = useState({})
+    
+    
     function success(pos) {
-        var crd = pos.coords;
-
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
+        setCrd(pos.coords)
     }
-    navigator.geolocation.getCurrentPosition(success);
-    console.log('what is the location!!', success)
 
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(success);
+    }, [])
+
+    useEffect(() => {
+        
+            if(crd.latitude === lat && crd.longitude === long){
+                console.log("3")
+                setMatch(true)
+            } else {
+                alert('Go to loot location to view message!')
+            }
+    }, [])
 
     return (
-        <div>I'm a complete message!</div>
+        <div>
+            {console.log(lat, long)}
+        {(match === true) ? (
+            <p>{message}</p>
+        ) : null}
+        </div>
         
 
     )
