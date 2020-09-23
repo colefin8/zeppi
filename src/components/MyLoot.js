@@ -1,5 +1,5 @@
-import React, {useEffect, useSelector} from 'react';
-import {useDispatch} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Snapshot from './Snapshot';
 import {getLoot} from '../redux/messageReducer';

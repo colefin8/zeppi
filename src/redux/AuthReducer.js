@@ -14,7 +14,7 @@ export function loginUser(payload){
 }
 
 export function getUser(payload){
-    console.log(payload)
+    console.log("Get User payload", payload)
     return {
         type: GET_USER,
         payload: payload

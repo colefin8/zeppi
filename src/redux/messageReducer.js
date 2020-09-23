@@ -1,10 +1,12 @@
 const initialState = {
     loot: [],
-    drops: []
+    drops: [],
+    message: {}
 }
 
 const GET_LOOT = 'GET_LOOT'
 const GET_DROPS = 'GET_DROPS'
+const GET_MESSAGE = 'GET_MESSAGE'
 
 export function getLoot(payload){
     console.log(payload)
@@ -22,6 +24,14 @@ export function getDrops(payload){
     }
 }
 
+export function getMessage(payload){
+    console.log(payload)
+    return {
+        type: GET_MESSAGE,
+        payload: payload
+    }
+}
+
 export default function reducer(state = initialState, action){
     const {type, payload} = action
     switch(type){
@@ -29,6 +39,8 @@ export default function reducer(state = initialState, action){
             return {...state, loot: payload}
         case GET_DROPS:
             return {...state, drops: payload}
+        case GET_MESSAGE:
+            return {...state, message: payload}
         default:
             return state
     }
