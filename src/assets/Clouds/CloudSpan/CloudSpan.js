@@ -4,10 +4,8 @@ import './CloudSpan.scss';
 function CloudSpan(props) {
   	return (
 		<svg 
-			width="100%"
-			height="100%" 
 			viewBox="0 0 1920 452.3" 
-			style={{overflow: "visible", enableBackground: "new 0 0 1920 452.3"}}
+			style={{overflow: "hidden", enableBackground: "new 0 0 1920 452.3"}}
 			className="CloudSpan"
 			{...props}
 		>

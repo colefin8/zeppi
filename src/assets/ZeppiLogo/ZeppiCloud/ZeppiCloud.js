@@ -5,7 +5,7 @@ function ZeppiCloud(props) {
   	return (
         <svg 
             viewBox="0 0 339.8 203.2" 
-            className="ZeppiCloud container__col-12 container__col-offset-6"
+            className="ZeppiCloud"
             {...props}
         >
             <style />

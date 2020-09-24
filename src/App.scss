@@ -21,7 +21,7 @@
 }
 
 .container {
-  max-width: $grid__bp-xl * 1px;
+  max-width: $grid__bp-lg * 1px;
   margin: 0 auto;
   &--fluid {
     display: flex;
@@ -103,9 +103,13 @@
 
 .body {
   font-size: $body;
-  font-weight: $font-regular;
-  font-family: $roboto;
+  font-weight: $font-light;
+  font-family: $lato;
   color: $font-color;
+  &-white {
+    @extend .body;
+    color: $white-primary;
+  }
 }
 
 .caption {
@@ -152,6 +156,9 @@
 // easy to use REM sizes
 .size {
   &-h {
+    &-full {
+      height: 100%;
+    }
     &-1 {
       height: 1rem;
     }
@@ -202,6 +209,7 @@
   @extend .m-r-1;
   @extend .m-l-1;
 }
+
 // Margin
 .m {
   &-a {
@@ -216,6 +224,9 @@
     }
   }
   &-t {
+    &-15 {
+      margin-top: 28rem;
+    }
     &-25 {
       margin-top: .25rem;
     }
@@ -480,12 +491,26 @@
 .rotate {
   animation: spin-animation ease-in-out 2s infinite;
 }
+
 @keyframes spin-animation {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(359deg);
+  }
+}
+
+.rotate-half {
+  animation: spin-half .8s forwards;
+}
+
+@keyframes spin-half {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(179deg);
   }
 }
 
@@ -496,6 +521,7 @@
   border-radius: 3px;
   background: $white-secondary;
   outline: 0;
+  color: $blue-primary;
   &.valid {
     border-color: $success-color;
   }
@@ -542,7 +568,7 @@
   }
   &-lg {
     @extend .btn;
-    @include btn-size(.15rem, .85rem 1.5rem .85rem 1.5rem, .75rem, .10rem, 400);
+    @include btn-size(.15rem, .7rem 1.5rem .7rem 1.5rem, .75rem, .10rem, 400);
     &-white {
       @extend .btn-lg;
       @include btn-theme($white-primary, $white-primary, $blue-primary);
@@ -560,15 +586,19 @@
 
 // link styling
 .link {
-  color: $white-primary;
+  color: $blue-primary;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center center;
-  height: 100%;
+  font-weight: $font-medium;
+  @extend .body;
   width: 100%;
+  border: none;
   &:hover {
     cursor: pointer;
     color: lighten($white-primary, 20%);
+    background-color: $red-primary;
+    font-weight: $font-medium;
     @include transition (all .3s);
   }
 }
@@ -576,7 +606,6 @@
 // APP STYLING AND CLASSES
 .App, .Welcome, .Login, .SimpleReactMap {
     width: 100%;
-    height: 100%;
 }
 
 .SimpleReactMap {
@@ -600,25 +629,173 @@
   
 }
 
-
-
 .Login {
   background: $blue-gradient-bg;
+  width: 100%;
+  @extend .flex-column;
+  @extend .justify-between;
+  @media(max-width: 1280px) {
+    height: 100%;
+    min-height: 100vh;
+  }
+  @media(min-width: 1280px){
+    overflow: hidden;
+    height: 100vh;
+  }
+
+}
+
+.SignupRow {
+  @extend .flex;
+  height: 1rem;
+}
+
+.SignupButton {
+  @extend .container__col-10;
+  @extend .m-r-1;
+}
+
+.SingleCloud {
+  @extend .container__col-10;
+  @extend .m-r-1;
+}
+
+.AuthForm {
+  @extend .container;
+  @extend .container__row;
 }
 
 .LoginForm {
-  @extend .container;
-
+@extend .container__col-16;
+@extend .container__col-sm-12;
+@extend .container__col-md-8;
+@extend .container__col-lg-6;
+@extend .container__col-xl-6;
+@extend .container__col-offset-4;
+@extend .container__col-sm-offset-6;
+@extend .container__col-md-offset-8;
+@extend .container__col-lg-offset-9;
+@extend .container__col-xl-offset-9;
 }
 
 .AuthLogo {
   @extend .container__row;
 }
 
+.ZeppiCloud {
+  @extend .container__col-24;
+}
 
+.AuthTitle {
+  @extend .subtitle-white;
+  @extend .container__row;
+  @extend .justify-center;
+  @extend .m-t-1;
+}
 
+.AuthInput {
+  @extend .input;
+  @extend .m-t-25;
+  @extend .container__col-24;
+}
 
+.AuthSubmit {
+  @extend .btn-lg-red;
+  @extend .m-t-50;
+  @extend .container__col-24;
+}
 
+.auth-form-link {
+  @extend .m-t-50;
+  @extend .body-white;
+}
+
+.GraphicRow {
+  min-width: 100%;
+  @extend .flex-column;
+  @extend .justify-end;
+  @extend .m-t-1;
+}
+
+// SIDENAV BAR STYLING
+.Navbar {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  @extend .container__row;
+  height: calc(100% - 100px);
+  pointer-events: none;
+}
+
+.NavbarContainer {
+  @extend .container__col-xl-5;
+  @extend .container__col-lg-8;
+  @extend .container__col-md-12;
+  @extend .container__col-sm-16;
+  @extend .container__col-18;
+  background-color: $white-primary;
+  border-radius: 0 .5rem 0 0;
+  pointer-events: visible;
+}
+
+.zeppiNavLogo {
+  @extend .container__col-sm-8;
+  @extend .container__col-sm-offset-8;
+  @extend .container__col-12;
+  @extend .container__col-offset-5;
+  @extend .m-v-2;
+}
+
+.nav-list-container {
+  @extend .container__row;
+}
+
+.nav-link-container {
+  @extend .container__col-24;
+  @extend .p-v-1;
+}
+
+.nav-toggle {
+  @extend .m-t-1;
+  color: $white-primary;
+  background-color: $red-primary;
+  height: 3rem;
+  width: 2rem;
+  border-radius: 0 .75rem .75rem 0;
+  pointer-events: visible;
+}
+
+.nav-toggle-icon {
+  @extend .m-t-1;
+  @extend .m-l-50;
+  @extend .rotate-half;
+}
+
+.expand-container {
+  animation: w0to100 ease-in .8s;
+  @include transition (all .8s);
+}
+
+.collapse-container {
+  animation: w100to0 ease-out 1s;
+
+}
+
+@keyframes w0to100 {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes w100to0 {
+  from { 
+    @extend .container__col-xl-6;
+    @extend .container__col-lg-8;
+    @extend .container__col-md-12;
+    @extend .container__col-sm-16;
+    @extend .container__col-18;  
+   }
+  to { width: 0%; pointer-events: none; cursor: not-allowed;}
+}
 
 // Custom Styling to get clouds to work but this will
 // be redone with design system extend styling to be
@@ -653,7 +830,7 @@
 }
 
 .login-button {
-  @extend .btn-sm-white;  
+  @extend .btn-lg-red;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-14;
   @extend .container__col-8;
@@ -662,7 +839,7 @@
 }
 
 .signup-button {
-  @extend .btn-sm-white;  
+  @extend .btn-lg-red;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-1;
   @extend .container__col-8;
@@ -680,7 +857,9 @@
 }
 
 .paper-planes {
-  @extend .container__col-md-5;
+  @extend .container__col-xl-5;
+  @extend .container__col-xl-offset-5;
+  @extend .container__col-md-6;
   @extend .container__col-md-offset-5;
   @extend .container__col-10;
   @extend .container__col-offset-3;
@@ -688,15 +867,11 @@
 
 .CloudSpan {
   @extend .container__row;
-  
+  width: 100%;
 }
 
 .RightBelowCloud {
   height: 40%;
   width: 100%;
   background-color: $white-primary;
-}
-
-.nav {
-  background-color: $red-primary;
 }
