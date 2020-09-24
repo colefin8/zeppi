@@ -39,8 +39,9 @@ app.get('/auth/user', authCtrl.getUser)
 //message
 app.post('/msg/newMsg', msgCtrl.newMessage)
 app.delete('/msg/deleteMsg/:message_id', msgCtrl.deleteMsg)
-app.get('/msg/userMsg/:userId', msgCtrl.getLoot)
-app.get('/msg/viewMsg/:lootId', msgCtrl.getMsg)
+app.get('/msg/loot/:userId', msgCtrl.getLoot)
+app.get('/msg/drops/:userId', msgCtrl.getDrops)
+app.get('/msg/view/:lootId', msgCtrl.getMsg)
 
 //Connections(friend's List) 
 app.post('/friends/newFriend', friendCtrl.addFriend)
