@@ -4,6 +4,7 @@ const massive = require('massive');
 const session = require('express-session');
 const authCtrl= require('./controllers/authController');
 const msgCtrl= require('./controllers/messageController');
+const friendCtrl= require('./controllers/friendController');
 
 const app = express();
 
@@ -41,7 +42,12 @@ app.delete('/msg/deleteMsg/:message_id', msgCtrl.deleteMsg)
 app.get('/msg/userMsg/:userId', msgCtrl.getLoot)
 app.get('/msg/viewMsg/:lootId', msgCtrl.getMsg)
 
-//
+//Connections(friend's List) 
+app.post('/friends/newFriend', friendCtrl.addFriend)
+app.get('/friends/all/:userId', friendCtrl.allFriends)
+app.put('/friends/accept/:friendId', friendCtrl.acceptRequest)
+app.get('/friends/request/:userId', friendCtrl.getRequest)
+
 
 
 app.listen(SERVER_PORT, () => console.log(`Connected to port ${SERVER_PORT}`));

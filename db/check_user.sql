@@ -4,4 +4,5 @@
 -- WHERE  users.user_name = $1;
 
 SELECT * FROM users
-WHERE email =$1
+WHERE email =$1;
+
