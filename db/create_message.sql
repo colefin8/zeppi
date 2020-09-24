@@ -2,8 +2,7 @@ INSERT INTO messages
     (message, sender, receiver, lat, long)
 VALUES
     ($1, $2, $3, $4, $5)
-
-
+RETURNING *;
 -- SELECT * FROM users
 -- JOIN messages ON(messages.sender = users.user_id)
 
