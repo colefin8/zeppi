@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
-function NewMessage(props) {
+function NewMessage() {
 
     const history = useHistory()
     const {user} = useSelector((state) => state.authReducer)
@@ -23,8 +23,11 @@ function NewMessage(props) {
         // console.log(`More or less ${crd.accuracy} meters.`);
     }
 
-    navigator.geolocation.getCurrentPosition(success);
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(success);
     console.log('what is the location!!', success)
+    }, [])
+    
 
     const newMessage =  () => {
         // setSender(user.userId)
