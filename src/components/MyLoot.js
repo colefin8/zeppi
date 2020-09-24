@@ -14,14 +14,14 @@ function MyLoot() {
     const {userId} = user
 
     useEffect(() => {
-        axios.get(`/msg/userMsg/${userId}`).then(res => {
+        axios.get(`/msg/loot/${userId}`).then(res => {
             console.log(res.data)
             dispatch(getLoot(res.data))
         }).catch(err => console.log(err))
     }, [dispatch, userId])
 
     const view = (lootId) => {
-        axios.get(`/msg/viewMsg/${lootId}`).then(res => {
+        axios.get(`/msg/view/${lootId}`).then(res => {
             dispatch(getMessage(res.data))
         }).catch(err => console.log(err))
 
