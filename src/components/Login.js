@@ -4,6 +4,9 @@ import {useHistory} from 'react-router-dom';
 import {loginUser} from '../redux/authReducer';
 import axios from 'axios';
 import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
+import SingleCloud from '../assets/Clouds/SingleCloud/SingleCloud';
+import CloudSpan from '../assets/Clouds/CloudSpan/CloudSpan';
+import PaperPlanes from '../assets/Planes/PaperPlanes/PaperPlanes';
 
 function Login() {
 
@@ -24,28 +27,52 @@ function Login() {
 
     return (
         <div className="Login">
-            <div className="LoginForm">
-            <div className="container__row">
-   
-                <div className="AuthLogo"><ZeppiCloud/></div>
-                
-                
-                <h1 className="subtitle-white container__col-12">LOGIN TO YOUR ACCOUNT</h1>
-
-                <input 
-                    className="input container__col-12"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}></input>
-                <input 
-                    className="input container__col-12"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}></input>
-                <button className="container__col-12" onClick={handleLogin}>LOGIN</button>
-                <h2 className="container__col-12">Forgot password?</h2>
-            </div>
-            </div>
+                <div className="SignupRow">
+                    <div className="SignupButton">
+                    sign
+                    </div>
+                </div>
+                <div className="AuthForm">
+                    <div className="container__row">
+                        <div className="LoginForm">
+                            <div className="container__row">
+                                <div className="AuthLogo">
+                                    <ZeppiCloud/>
+                                </div>
+                                <h1 className="AuthTitle">ACCOUNT LOGIN</h1>
+                                <div className="container__row justify-center">
+                                    <input 
+                                        className="AuthInput"
+                                        placeholder="Email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}></input>
+                                </div>
+                                <div className="container__row justify-center">
+                                    <input 
+                                        className="AuthInput"
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}></input>
+                                </div>
+                                <div className="container__row justify-center">
+                                    <button className="AuthSubmit" onClick={handleLogin}>LOGIN</button>
+                                </div>
+                                <div className="container__row justify-center">
+                                    <h2 className="auth-form-link">Forgot password?</h2>
+                                </div>
+                                <div className="container__row justify-center">
+                                    <h2 className="auth-form-link m-b-1">Dont have an account?</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="GraphicRow">
+                    <div className="container__row size-h-3">
+                        <PaperPlanes className="paper-planes"/>
+                    </div>
+                    <CloudSpan className="CloudSpan"/>
+                </div>
         </div>
     )
 }

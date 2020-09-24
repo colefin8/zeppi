@@ -1,3 +1,8 @@
+import * as React from "react";
+import './ZeppiWithPlane.scss';
+
+function ZeppiWithPlane(props) {
+  	return (
 <svg 
     viewBox="0 0 201.1 74.4" 
     className="ZeppiWithPlane"
@@ -35,3 +40,7 @@
 		C190.1,73,189.8,72.4,189.8,71.6z"/>
 </g>
 </svg>
+	);
+}
+
+export default ZeppiWithPlane;
