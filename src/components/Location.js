@@ -6,8 +6,8 @@ export const usePosition = () => {
 
     const onChange = ({coords}) => {
         setPosition({
-            latitude: coords.latitude,
-            longitude: coords.longitude
+            latitude: (coords.latitude).toFixed(6),
+            longitude: (coords.longitude).toFixed(6)
         })
     }
 
@@ -19,13 +19,13 @@ export const usePosition = () => {
         const geo = navigator.geolocation;
         if (!geo) {
             setError('Geolocation is not available.')
-            return;
+            return null;
         }
 
         const watcher = geo.watchPosition(onChange, onError)
 
         return () => geo.clearWatch(watcher)
     }, [])
-
+    console.log(position)
     return {...position, error}
 }

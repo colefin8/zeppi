@@ -1,19 +1,15 @@
 const bcrypt = require('bcrypt');
 module.exports = {
     register: async (req, res) => {
-        console.log('BODY!!', req.body)
         const db = req.app.get('db');
         const {username, firstName, lastName, phone, email, password} = req.body;
 
         const existingUser = await db.check_user(email)
         if (existingUser[0]) {
-            return res.status(409).send('Incorrect credentials')
+            return res.status(409).send('Email address belongs to an existing account.')
         }
         const salt = bcrypt.genSaltSync(10);
-        console.log('SALT', salt)
-        console.log('PASSWORD!',password)
         const hash = bcrypt.hashSync(password, salt)
-        console.log('HASH?', hash)
         const newUser = await db.create_user([username, firstName, lastName, phone, email, hash])
         req.session.user = {
         userId: newUser[0].user_id,
@@ -29,9 +25,7 @@ module.exports = {
     login: async (req, res)=> {
         const db = req.app.get('db');
         const{email, password}= req.body;
-        console.log("email", email)
         const user= await db.check_user(email)
-console.log("user", user)
         if(!user[0]){
             return res.status(401).send('Incorrect credentials');
         }else {
@@ -48,14 +42,13 @@ console.log("user", user)
 
                     }
                 res.status(200).send(req.session.user)
-            }else{
+            } else {
                 res.status(403).send('Username or password incorrect')
             }
         }
- },
+    },
     logout: (req, res) => {
         req.session.destroy();
-        console.log("logged out")
         res.status(200).send('You are logged out!');
     },
     test: (req, res)=>{

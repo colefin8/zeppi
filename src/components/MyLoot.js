@@ -23,9 +23,8 @@ function MyLoot() {
     const view = (lootId) => {
         axios.get(`/msg/view/${lootId}`).then(res => {
             dispatch(getMessage(res.data))
+            history.push(`/viewMessage/${lootId}`)
         }).catch(err => console.log(err))
-
-        history.push(`/viewMessage/${lootId}`)
     }
 
     return (
