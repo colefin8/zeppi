@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS messages
     message VARCHAR(500) NOT NULL,
     sender INT NOT NULL REFERENCES users(user_id),
     receiver INT NOT NULL REFERENCES users(user_id),
-    lat VARCHAR(15) NOT NULL,
-    long VARCHAR(15) NOT NULL
+    lat FLOAT NOT NULL,
+    long FLOAT NOT NULL
 );
 
 
