@@ -11,15 +11,17 @@ function ViewMessage() {
     const {latitude, longitude} = usePosition()
     const {message_id, lat, long} = viewMessage
     const [match, setMatch] = useState(false)
-    const [result, setResult] = useState([])
+    const [result, setResult] = useState({})
     const {message, sender, receiver} = result
 
     useEffect(() => {
         const lootId = message_id
         if (message_id && latitude && longitude){
             axios.get(`/msg/match/${lootId}/${latitude}/${longitude}`).then(res => {
+               if(res.data[0]){
                 setResult(res.data[0])
                 setMatch(true)
+               }
             }).catch(err => console.log(err))
         }
         // if(latitude && lat && longitude && long){
