@@ -1,8 +1,13 @@
 import React from 'react';
 
-function Friend() {
+function Friend(props) {
+
+    const {user_name} = props.friend
+
     return (
-        <div>Hi, I'm a friend!</div>
+        <div>
+        {user_name}
+        </div>
     )
 }
 
