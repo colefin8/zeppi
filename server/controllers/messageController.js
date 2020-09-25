@@ -1,7 +1,7 @@
 module.exports = {
     newMessage:(req,res)=>{
-        console.log('BODY!!', req.body)
         const db = req.app.get('db');
+        console.log(req.body)
         const {message, sender, receiver, latitude, longitude} = req.body;
         db.create_message([
             message,
@@ -14,7 +14,6 @@ module.exports = {
         }).catch(err => {console.log(err)});
     },
     deleteMsg:(req, res)=>{
-        console.log('what is req.params', req.params)
         const db = req.app.get('db');
         const {message_id}= req.params
         db.delete_message([
@@ -35,7 +34,6 @@ module.exports = {
     getMsg:(req, res)=>{
         const db = req.app.get('db');
         const {lootId} = req.params
-        console.log(lootId)
         db.user_message([lootId]).then(message => {
             res.status(200).send(message[0])
         }).catch(err => console.log(err))

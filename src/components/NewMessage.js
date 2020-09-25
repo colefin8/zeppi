@@ -8,13 +8,14 @@ function NewMessage() {
 
     const history = useHistory()
     const {user} = useSelector((state) => state.authReducer)
-    const {latitude, longitude, error} = usePosition();
+    const {latitude, longitude} = usePosition();
     const [receiver, setReceiver] = useState(0)
     const [message, setMessage] = useState('')
 
     const newMessage =  () => {
         const sender = user.userId
-        console.log(sender)
+
+        console.log(latitude, longitude)
         axios.post('/msg/newMsg', {message, sender, receiver, latitude, longitude}).then(() => {
                 history.push('/drops')
         }).catch(err => console.log(err))
