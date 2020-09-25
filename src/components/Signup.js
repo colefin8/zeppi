@@ -106,7 +106,7 @@ function Signup() {
                             </div>
                             <div className="container__row justify-center align-center">
                                 <div className="flex"> 
-                                    <ArrowLeftIcon className="auth-form-link"/>
+                                    <ArrowLeftIcon className="auth-form-link" height=".8rem"/>
                                     <h2 className="auth-form-link">Back to Login</h2>
                                 </div>
                             </div>

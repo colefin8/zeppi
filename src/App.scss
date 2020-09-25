@@ -647,7 +647,7 @@
 
 .SignupRow {
   @extend .flex;
-  height: 1rem;
+  height: 3rem;
 }
 
 .SignupButton {
@@ -691,6 +691,7 @@
   @extend .container__row;
   @extend .justify-center;
   @extend .m-t-1;
+  @extend .m-b-50;
 }
 
 .AuthInput {
@@ -714,10 +715,11 @@
   min-width: 100%;
   @extend .flex-column;
   @extend .justify-end;
-  @extend .m-t-1;
+  @extend .m-t-25
 }
 
 // SIDENAV BAR STYLING
+
 .Navbar {
   position: fixed;
   bottom: 0px;

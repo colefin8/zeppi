@@ -29,7 +29,7 @@ function Login() {
         <div className="Login">
                 <div className="SignupRow">
                     <div className="SignupButton">
-                    sign
+                
                     </div>
                 </div>
                 <div className="AuthForm">
