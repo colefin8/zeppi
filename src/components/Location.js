@@ -6,8 +6,8 @@ export const usePosition = () => {
 
     const onChange = ({coords}) => {
         setPosition({
-            latitude: (coords.latitude).toFixed(6),
-            longitude: (coords.longitude).toFixed(6)
+            latitude: (coords.latitude),
+            longitude: (coords.longitude)
         })
     }
 
