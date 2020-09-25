@@ -44,5 +44,12 @@ module.exports = {
         db.message_sender([userId]).then(messages => {
             res.status(200).send(messages)
         }).catch(err => console.log(err))
+    },
+    messageMatch:(req, res)=>{
+        const db= req.app.get('db');
+        const {lootId, latitude, longitude}=req.params
+        db.message([lootId, latitude, longitude]).then(message=>{
+            res.status(200).send(message)
+        }).catch(err=> console.log(err))
     }
 }

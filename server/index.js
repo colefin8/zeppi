@@ -42,6 +42,7 @@ app.delete('/msg/deleteMsg/:message_id', msgCtrl.deleteMsg)
 app.get('/msg/loot/:userId', msgCtrl.getLoot)
 app.get('/msg/drops/:userId', msgCtrl.getDrops)
 app.get('/msg/view/:lootId', msgCtrl.getMsg)
+app.get('/msg/match/:lootId/:latitude/:longitude', msgCtrl.messageMatch)
 
 //Connections(friend's List) 
 app.post('/friends/newFriend', friendCtrl.addFriend)
