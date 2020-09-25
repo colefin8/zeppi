@@ -27,11 +27,11 @@ function Navbar() {
                     <div className="container__row">
                         <ZeppiWithPlane className={`zeppiNavLogo ${!isOpen ? "hidden" : ""}`}/>
                     </div>
-                        <Link to="/loot" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`}>MY LOOT</Link>
-                        <Link to="/drops" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`}>MY DROPS</Link>
-                        <Link to="/map" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`}>MAP</Link>
-                        <Link to="/friends" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`}>MY FRIENDS</Link>
-                        <Link to="/account" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`}>ACCOUNT</Link>
+                        <Link to="/loot" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`} onClick={e => setIsOpen(!isOpen)}>MY LOOT</Link>
+                        <Link to="/drops" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`} onClick={e => setIsOpen(!isOpen)}>MY DROPS</Link>
+                        <Link to="/map" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`} onClick={e => setIsOpen(!isOpen)}>MAP</Link>
+                        <Link to="/friends" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`} onClick={e => setIsOpen(!isOpen)}>MY FRIENDS</Link>
+                        <Link to="/account" className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`} onClick={e => setIsOpen(!isOpen)}>ACCOUNT</Link>
                     </div>   
                     <div className="container__row">
                         <button className={`nav-link-container link p-l-1 ${!isOpen ? "hidden" : ""}`} onClick={handleLogout}>LOG OUT</button>

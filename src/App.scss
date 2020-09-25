@@ -21,7 +21,7 @@
 }
 
 .container {
-  max-width: $grid__bp-lg * 1px;
+  max-width: $grid__bp-md * 1px;
   margin: 0 auto;
   &--fluid {
     display: flex;
@@ -56,7 +56,7 @@
 
 .title {
   font-size: $title;
-  font-weight: $font-light;
+  font-weight: $font-thin;
   font-family: $lato;
   color: $font-color;
   &-blue {
@@ -86,29 +86,31 @@
 
 .phrase {
   font-size: $phrase;
-  font-weight: $font-light;
-  font-family: $roboto;
+  font-weight: $font-regular;
+  font-family: $lato;
   color: $font-color;
   &-blue {
     @extend .phrase;
     color: $blue-primary;
-    font-weight: $font-regular;
   }
   &-white {
     @extend .phrase;
     color: $white-primary;
-    font-weight: $font-regular;
   }
 }
 
 .body {
   font-size: $body;
-  font-weight: $font-light;
-  font-family: $lato;
+  font-weight: $font-medium;
+  font-family: $roboto;
   color: $font-color;
   &-white {
     @extend .body;
     color: $white-primary;
+  }
+  &-blue {
+    @extend .body;
+    color: $blue-primary;
   }
 }
 
@@ -136,6 +138,41 @@
   &-white {
     @extend .caption;
     color: $white-primary;
+  }
+  &-red {
+    @extend .caption;
+    color: $red-primary;
+  }
+}
+
+.highlight {
+  font-size: $highlight;
+  font-weight: $font-medium;
+  font-family: $roboto;
+  color: $font-color;
+  &-blue {
+    @extend .highlight;
+    color: $blue-primary;
+  }
+  &-error {
+    @extend .highlight;
+    color: $error-color;
+  }
+  &-warning {
+    @extend .highlight;
+    color: $warning-color;
+  }
+  &-success {
+    @extend .highlight;
+    color: $success-color;
+  }
+  &-white {
+    @extend .highlight;
+    color: $white-primary;
+  }
+  &-red {
+    @extend .highlight;
+    color: $red-primary;
   }
 }
 
@@ -233,6 +270,9 @@
     &-50 {
       margin-top: .5rem;
     }
+    &-75 {
+      margin-top: .75rem;
+    }
     &-1 {
       margin-top: 1rem;
     }
@@ -257,6 +297,10 @@
   &-v {
     &-auto {
       margin: auto 0;
+    }
+    &-50 {
+      margin-top: .5rem;
+      margin-bottom: .5rem;
     }
     &-1 {
       margin-top: 1rem;
@@ -522,6 +566,11 @@
   background: $white-secondary;
   outline: 0;
   color: $blue-primary;
+  &-highlight {
+    @extend .input;
+    background-color: $white-primary;
+    border: none;
+  }
   &.valid {
     border-color: $success-color;
   }
@@ -606,7 +655,131 @@
 // APP STYLING AND CLASSES
 .App, .Welcome, .Login, .SimpleReactMap {
     width: 100%;
+    height: 100%;
 }
+
+.App {
+  background: $blue-gradient-bg;
+}
+
+.dashboard-page {
+  height: 100%;
+  @extend .flex-column;
+  @extend .justify-center;
+  @extend .align-center;
+}
+
+.page-container {
+  width: 100%;
+  @extend .container;
+}
+
+.page-title {
+  @extend .container__row;
+  @extend .justify-center;
+  @extend .m-b-1;
+}
+
+.page-content {
+  @extend .container__row;
+}
+
+.page-header {
+  @extend .container__col-22;
+  @extend .container__col-offset-1;
+  @extend .m-b-2;
+}
+
+.half-box {
+  @extend .container__col-11;
+  background-color: $white-primary;
+  border-radius: .5rem;
+}
+
+.full-box {
+  @extend .container__col-24;
+  background-color: $white-primary;
+  border-radius: .5rem;
+}
+
+.highlight-container {
+  .highlight-type {
+    @extend .container__row;
+    @extend .m-l-1;
+    @extend .m-t-75;
+    @extend .phrase-blue;
+  }
+  .highlight-count {
+    @extend .container__row;
+    @extend .justify-center;
+    @extend .m-v-50;
+  }
+  .highlight-focus {
+    @extend .container__row;
+    @extend .justify-center;
+    @extend .caption-blue;
+    @extend .m-b-1;
+  }
+}
+
+.table-container {
+  @extend .container__col-22;
+  @extend .container__col-offset-1;
+  background-color: $white-primary;
+  border-radius: .5rem;
+  @extend .m-b-2;
+  .table-header {
+    @extend .container__row;
+    border-bottom: solid 1px $white-secondary;
+    .table-title {
+      @extend .container__col-24;
+      @extend .m-a-1;
+    }
+  }
+  .table-content {
+    @extend .container__row;
+    @extend .m-b-1;
+    .table-row {
+      @extend .container__col-24;
+      border-bottom: solid 1px $white-secondary;
+      border-radius: .5rem;
+    }
+  }
+  .table-footer {
+    @extend .flex;
+    @extend .justify-center;
+    @extend .m-v-1;
+  }
+}
+
+.snapshot {
+  @extend .flex;
+  @extend .justify-between;
+  @extend .m-v-50;
+  .snapshot-content{
+    @extend .flex;
+    .snapshot-icon {
+      @extend .m-l-1;
+      @extend .flex-column;
+      @extend .justify-center;
+      width: 2rem;
+      height: 2rem;
+      background-color: $red-primary;
+      border-radius: 3rem;
+      color: $white-primary;
+    }
+    .snapshot-info {
+      @extend .m-l-50;
+    }
+  }  
+  .snapshot-action {
+    @extend .flex-column;
+    @extend .justify-center;
+    @extend .m-r-1;
+    color: $red-primary;
+  }
+}
+
 
 .SimpleReactMap {
   background: $blue-gradient-bg;
@@ -631,7 +804,6 @@
 
 .Login {
   background: $blue-gradient-bg;
-  width: 100%;
   @extend .flex-column;
   @extend .justify-between;
   @media(max-width: 1280px) {
