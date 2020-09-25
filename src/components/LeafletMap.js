@@ -116,7 +116,7 @@ const LeafletMap = (props) => {
             </Control>
             {/* Drag and Drop Drop icon allowing the user to add a new drop from the map functions much like google street view */}
             <Control position="topright" draggable onDragOver={e => handleDragOver(e)} onDragStart={e => handleDragStart(e)}>
-                <LootIcon draggable onDragOver={e => handleDragOver(e)} onDragStart={e => handleDragStart(e)}/>       
+                <DropIcon draggable onDragOver={e => handleDragOver(e)} onDragStart={e => handleDragStart(e)}/>       
             </Control>
             {/* Map lists for each drop and list for the current user */}
             {loot.map(lootMessage => (

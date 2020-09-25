@@ -28,9 +28,43 @@ function MyLoot() {
     }
 
     return (
-        <div>
-        <div>This is where the user's received messages (loot) will be.</div>
-        {loot.map(item => <Snapshot key={item.message_id} loot={item} view={view}/>)}
+        <div className="MyLoot dashboard-page">
+            <div className="page-container">
+                <div className="page-title">
+                    <h1 className="title-white">My Loot</h1>
+                </div>
+                <div className="page-content">
+                    <div className="page-header">
+                        <div className="container__row justify-between">
+                        <div className="half-box">
+                            <div className="highlight-container">
+                                <div className="highlight-type">Pending</div>
+                                <div className="highlight-count highlight-warning">12</div>
+                                <div className="highlight-focus">Loot</div>
+                            </div>
+                        </div>
+                        <div className="half-box">
+                            <div className="highlight-container">
+                                <div className="highlight-type">Total</div>
+                                <div className="highlight-count highlight">117</div>
+                                <div className="highlight-focus">Loot</div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div className="table-container">  
+                        <div className="table-header">
+                            <p className=" table-title phrase-blue">Pending Loot</p>
+                        </div>
+                        <div className="table-content">
+                            {loot.map(item =><div className="table-row"><Snapshot key={item.message_id} loot={item} view={view}/></div>)}
+                        </div>
+                        <div className="table-footer">
+                            <p className="caption-red">SHOW MORE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
