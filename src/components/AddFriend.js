@@ -52,6 +52,7 @@ function AddFriend() {
                 </div>
             </div>
         </div>
+
 )
 }
 

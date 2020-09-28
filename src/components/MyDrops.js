@@ -16,7 +16,7 @@ function MyDrops() {
             console.log(res.data)
             dispatch(getDrops(res.data))
         }).catch(err => console.log(err))
-    }, [dispatch, userId])
+    }, [dispatch])
     
     return (
         <div className="MyDrops dashboard-page">

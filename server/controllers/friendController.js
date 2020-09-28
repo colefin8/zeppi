@@ -26,9 +26,9 @@ module.exports = {
     },
     acceptRequest:(req, res)=>{
         const db = req.app.get('db');
-        const{friendId}=req.params
-        db.accept_friend(friendId).then(friend=>{
-            res.status(200).send(friend)
+        const{friendId, userId}=req.params
+        db.accept_friend([friendId, userId]).then(requests => {
+            res.status(200).send(requests)
         }).catch(err=>console.log(err))
     },
     getRequest: (req,res)=>{
@@ -37,6 +37,13 @@ module.exports = {
         db.friend_request(userId).then(friend=>{
             res.status(200).send(friend)
         }).catch(err=>console.log(err))
-    }
+    },
+    denyRequest:(req, res)=>{
+        const db = req.app.get('db');
+        const{friendId, userId}=req.params
+        db.deny_friend([friendId, userId]).then(requests => {
+            res.status(200).send(requests)
+        }).catch(err=>console.log(err))
+    },
 
 }

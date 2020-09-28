@@ -1,11 +1,16 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 import CheckCircleIcon from '../assets/icons/systemIcons/CheckCircleIcon';
 import CloseCircleIcon from '../assets/icons/systemIcons/CloseCircleIcon';
 
 function Request(props) {
 
-    const {user_name} = props.request
+    const {user_name, id} = props.request
+    const {user} = useSelector((state) => state.authReducer)
+    const {accept, deny} = props
+    const {userId} = user
+
 
     return (
         <div className="snapshot">
@@ -20,8 +25,8 @@ function Request(props) {
                 </div>
             </div>
             <div className="snapshot-action">
-                <CheckCircleIcon onClick={() => {}}/>
-                <CloseCircleIcon onClick={() => {}}/>
+                <CheckCircleIcon onClick={() => accept(id, userId)}/>
+                <CloseCircleIcon onClick={() => deny(id, userId)}/>
             </div>
         </div>
     )
