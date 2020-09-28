@@ -12,7 +12,6 @@ import ViewMessage from './components/ViewMessage'
 import NewMessage from './components/NewMessage'
 import AddFriend from './components/AddFriend'
 
-
 export default (
     <Switch>
         <Route exact path="/" component={Welcome}/>

@@ -2,7 +2,9 @@ import React from 'react';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 import PlusIcon from '../assets/icons/systemIcons/PlusIcon';
 
+
 function AddFriend() {
+
     return (
         <div className="AddFriend dashboard-page">
             <div className="page-container">
