@@ -34,7 +34,7 @@ function Account() {
                             </div>
                             <div className="table-row">  
                                 <div className="snapshot">
-                                    <div className="snapshot-content m-l-1">
+                                    <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Email</h1>
                                             <h2 className="caption-blue m-t-50">example@email.com</h2>
@@ -47,7 +47,7 @@ function Account() {
                             </div>
                             <div className="table-row">  
                                 <div className="snapshot">
-                                    <div className="snapshot-content m-l-1">
+                                    <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Phone</h1>
                                             <h2 className="caption-blue m-t-50">(123) 456-7890</h2>
@@ -60,7 +60,7 @@ function Account() {
                             </div>
                             <div className="table-row">  
                                 <div className="snapshot">
-                                    <div className="snapshot-content m-l-1">
+                                    <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">First Name</h1>
                                             <h2 className="caption-blue m-t-50">Jane</h2>
@@ -73,7 +73,7 @@ function Account() {
                             </div>
                             <div className="table-row">  
                                 <div className="snapshot">
-                                    <div className="snapshot-content m-l-1">
+                                    <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Last Name</h1>
                                             <h2 className="caption-blue m-t-50">Doe</h2>

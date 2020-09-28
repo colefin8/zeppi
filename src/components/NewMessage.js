@@ -23,17 +23,48 @@ function NewMessage() {
     }
 
     return (
-        <div>
+        <div className="NewMessage dashboard-page">
             {console.log(user)}
-            <input 
-                placeholder="Recipient"
-                type="number"
-                onChange={(e) => setReceiver(e.target.value)}></input>
-            <input 
-                type="text"
-                placeholder="Message"
-                onChange={(e) => setMessage(e.target.value)}></input>
-            <button onClick={newMessage}>SEND</button>
+            <div className="page-container">
+                <div className="page-title">
+                    <h1 className="title-white">New Drop</h1>
+                </div>
+                <div className="page-content">
+                    <div className="page-header">
+                        <div className="container__row justify-between">
+                            <div className="full-box">
+                                <div className="container__row justify-between">
+                                    <div className="container__col-22 container__col-offset-1">
+                                        <input 
+                                        placeholder="Recipient"
+                                        type="number"
+                                        className="page-input"
+                                        onChange={(e) => setReceiver(e.target.value)}></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="page-header">
+                        <div className="container__row justify-between">
+                            <div className="full-box">
+                                <div className="container__row justify-between">
+                                    <div className="container__col-22 container__col-offset-1">
+                                        <textarea
+                                        type="text"
+                                        placeholder="Type your message here..."
+                                        className="page-input"
+                                        onChange={(e) => setMessage(e.target.value)}></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="page-action"> 
+                        <button className="btn-lg-red page-btn" onClick={newMessage}>SEND</button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
