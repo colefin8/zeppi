@@ -37,15 +37,67 @@ function ViewMessage() {
     }
 
     return (
-        <div>
+        <div className="ViewMessage dashboard-page">
             {console.log(match, latitude, lat, longitude, long)}
             {console.log(result)}
         {match === true ? (
-            <div>
-            <h2>From: {sender}</h2>
-            <h2>To: {receiver}</h2>
-            <p>{message}</p>
-            <button onClick={close}>CLOSE</button>
+            <div className="page-container">
+                <div className="page-title">
+                    <h1 className="title-white">View Message</h1>
+                </div>
+                <div className="page-content">
+                    <div className="page-header">
+                        <div className="container__row justify-between">
+                            <div className="full-box">
+                                <div className="container__row justify-between">
+                                    <div className="container__col-22 container__col-offset-1">
+                                        <input 
+                                        value={`From: ${sender}`}
+                                        type="number"
+                                        className="page-input"
+                                        ></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="page-header">
+                        <div className="container__row justify-between">
+                            <div className="full-box">
+                                <div className="container__row justify-between">
+                                    <div className="container__col-22 container__col-offset-1">
+                                        <input 
+                                        value={`To: ${receiver}`}
+                                        type="number"
+                                        className="page-input"
+                                        ></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="page-header">
+                        <div className="container__row justify-between">
+                            <div className="full-box">
+                                <div className="container__row justify-between">
+                                    <div className="container__col-22 container__col-offset-1">
+                                        <textarea
+                                        type="text"
+                                        value={message}
+                                        className="page-input"
+                                        onChange={(e) => {}}></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="page-action"> 
+                        <button onClick={close}>CLOSE</button>
+                    </div>
+
+                </div>
             </div>
         ) : null}
         </div>
