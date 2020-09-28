@@ -107,6 +107,8 @@
   &-white {
     @extend .body;
     color: $white-primary;
+    font-weight: $font-regular;
+    font-family: $lato;
   }
   &-blue {
     @extend .body;
@@ -250,6 +252,9 @@
 // Margin
 .m {
   &-a {
+    &-50 {
+      margin: .5rem;
+    }
     &-1 {
       margin: 1rem;
     }
@@ -326,6 +331,12 @@
     }
     &-2 {
       margin-left: 2rem;
+    }
+    &-3 {
+      margin-left: 3rem;
+    }
+    &-4 {
+      margin-left: 4rem;
     }
   }
   &-r {
@@ -566,17 +577,17 @@
   background: $white-secondary;
   outline: 0;
   color: $blue-primary;
-  &-highlight {
-    @extend .input;
-    background-color: $white-primary;
-    border: none;
-  }
-  &.valid {
-    border-color: $success-color;
-  }
-  &.invalid {
-    border-color: $error-color;
-  }
+}
+
+.page-input {
+  @extend .p-v-1;
+  @extend .container__row;
+  border: none;
+  border-radius: .75rem;
+  background: none;
+  outline: 0;
+  color: $blue-primary;
+  font-family: $lato;
 }
 
 // BUTTONS
@@ -677,7 +688,7 @@
 .page-title {
   @extend .container__row;
   @extend .justify-center;
-  @extend .m-b-1;
+  @extend .m-b-2;
 }
 
 .page-content {
@@ -752,6 +763,16 @@
   }
 }
 
+.page-action {
+  @extend .container__col-22;
+  @extend .container__col-offset-1;
+  border-radius: .5rem;
+}
+
+.page-btn {
+  width: 100%;
+}
+
 .snapshot {
   @extend .flex;
   @extend .justify-between;
@@ -779,7 +800,6 @@
     color: $red-primary;
   }
 }
-
 
 .SimpleReactMap {
   background: $blue-gradient-bg;
@@ -839,15 +859,11 @@
 
 .LoginForm {
 @extend .container__col-16;
-@extend .container__col-sm-12;
+@extend .container__col-sm-10;
 @extend .container__col-md-8;
-@extend .container__col-lg-6;
-@extend .container__col-xl-6;
 @extend .container__col-offset-4;
-@extend .container__col-sm-offset-6;
+@extend .container__col-sm-offset-7;
 @extend .container__col-md-offset-8;
-@extend .container__col-lg-offset-9;
-@extend .container__col-xl-offset-9;
 }
 
 .AuthLogo {
@@ -879,7 +895,7 @@
 }
 
 .auth-form-link {
-  @extend .m-t-50;
+  @extend .m-t-1;
   @extend .body-white;
 }
 
@@ -887,7 +903,7 @@
   min-width: 100%;
   @extend .flex-column;
   @extend .justify-end;
-  @extend .m-t-25
+  @extend .m-t-25;
 }
 
 // SIDENAV BAR STYLING
@@ -976,50 +992,72 @@
 // be redone with design system extend styling to be
 // universal
 // WELCOME STYLING AND CLASS COMPONENTS
-.nav-bar {
+.cloud-container {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+}
+
+.nav-bar {
   @extend .container__row;
-  justify-content: space-between;
   @media(max-width: 768px) {
-    background-color: $blue-gradient-bg;
+    background-color: $blue-primary;
   }
-  @media(min-width: 768px){
+  @media(min-width: 769px){
     background-color: transparent;
   }
 }
 
+.welcome-toggle {
+  @extend .container__row;
+  margin-left: auto;
+  color: $white-primary;
+  background-color: $red-primary;
+  height: 2rem;
+  width: 3rem;
+  border-radius: 0 0 .75rem .75rem;
+  pointer-events: visible;
+  @extend .hidden-md-up;
+}
+
+.welcome-toggle-icon {
+  @extend .m-t-50;
+  @extend .m-l-1;
+  @extend .rotate-half;
+}
+
 .zeppi-text {
-  @extend .container__col-md-3;
+  @extend .container__col-md-4;
   @extend .container__col-md-offset-1;
-  @extend .container__col-8;
-  @extend .container__col-offset-8;
-  margin-top: 1rem;
+  @extend .container__col-16;
+  @extend .container__col-offset-4;
+  @extend .m-v-2;
 }
 
 .header-buttons{
-  @extend .container__col-md-14;
+  @extend .container__col-md-17;
   @extend .container__col-md-offset-1;
-  @extend .container__col-24;
+  @extend .container__col-16;
+  @extend .container__col-offset-4;
 }
 
 .login-button {
   @extend .btn-lg-red;  
   @extend .container__col-md-3;
-  @extend .container__col-md-offset-14;
-  @extend .container__col-8;
-  @extend .container__col-offset-8;
-  margin-top: 1.75rem;
+  @extend .container__col-md-offset-1;
+  @extend .container__col-24;
+  @extend .m-v-2;
+
 }
 
 .signup-button {
   @extend .btn-lg-red;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-1;
-  @extend .container__col-8;
-  @extend .container__col-offset-8;
-  margin-top: 1.75rem;
+  @extend .container__col-24;
+  @extend .m-v-2;
+
 }
 
 .preview-container {
@@ -1046,7 +1084,27 @@
 }
 
 .RightBelowCloud {
-  height: 40%;
+  height: 100vh;
   width: 100%;
   background-color: $white-primary;
+}
+
+.ConsoleButton{
+  @extend .flex;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  @extend .justify-center;
+  @extend .align-center;
+  @extend .m-v-1;
+  @extend .radius-4;
+  background-color: $red-primary;
+  pointer-events: all;
+  z-index: 2000;
+  @include transition(all 1s);
+  .SettingIcon {
+    @extend .m-a-50;
+    color: rgba(255, 255, 255, 0.85);
+    pointer-events: all;
+  }
 }
