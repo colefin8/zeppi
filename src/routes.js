@@ -10,6 +10,7 @@ import Signup from './components/Signup'
 import Welcome from './components/Welcome'
 import ViewMessage from './components/ViewMessage'
 import NewMessage from './components/NewMessage'
+import addFriend from './components/AddFriend'
 
 
 export default (

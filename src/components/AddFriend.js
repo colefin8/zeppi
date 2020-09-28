@@ -1,9 +1,14 @@
 import React from 'react';
 
 
+
 function AddFriend() {
-    return (
-        <div>
+
+    
+    
+
+
+    return (<div>
             <h1>Welcome to "My Friends"!</h1>
         </div>
     )
