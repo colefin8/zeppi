@@ -24,12 +24,7 @@ function ViewMessage() {
                }
             }).catch(err => console.log(err))
         }
-        // if(latitude && lat && longitude && long){
-        //     if(latitude === lat && longitude === long){
-        //         setMatch(true)
-        //     }
-        // }  
-    }, [lat, long, latitude, longitude])
+    }, [message_id, lat, long, latitude, longitude])
 
     const close = () => {
         setMatch(false)

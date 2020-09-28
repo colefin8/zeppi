@@ -20,12 +20,28 @@ function MyFriends() {
         axios.get(`/friends/request/${userId}`).then(res => {
             dispatch(getRequests(res.data))
         }).catch(err => console.log(err))
-    }, [dispatch, userId])
+    }, [dispatch])
+
+    const accept = (friendId, userId) => {
+        axios.put(`/friends/accept/${friendId}/${userId}`).then(res => {
+            dispatch(getFriends(res.data))
+            axios.get(`/friends/request/${userId}`).then(res => {
+                dispatch(getRequests(res.data))
+            }).catch(err => console.log(err))
+        }).catch(err => console.log(err))
+        
+    }
+
+    const deny = (friendId, userId) => {
+        axios.put(`/friends/deny/${friendId}/${userId}`).then(res => {
+            dispatch(getRequests(res.data))
+        }).catch(err => console.log(err))
+    }
 
     const friendList = friends.filter(name => name !== username)
     .map((friend, index) => <Friend key={index} friend={friend}/>)
 
-    const requestList = requests.map(request => <Request key={request.id} request={request}/>)
+    const requestList = requests.map(request => <Request key={request.id} request={request} accept={accept} deny={deny}/>)
 
     return (
         <div>

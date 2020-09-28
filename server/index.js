@@ -47,8 +47,9 @@ app.get('/msg/match/:lootId/:latitude/:longitude', msgCtrl.messageMatch)
 //Connections(friend's List) 
 app.post('/friends/newFriend', friendCtrl.addFriend)
 app.get('/friends/all/:userId', friendCtrl.allFriends)
-app.put('/friends/accept/:friendId', friendCtrl.acceptRequest)
+app.put('/friends/accept/:friendId/:userId', friendCtrl.acceptRequest)
 app.get('/friends/request/:userId', friendCtrl.getRequest)
+app.put('/friends/deny/:friendId/:userId', friendCtrl.denyRequest)
 
 
 

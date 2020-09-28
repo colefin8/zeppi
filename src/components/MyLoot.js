@@ -18,7 +18,7 @@ function MyLoot() {
             console.log(res.data)
             dispatch(getLoot(res.data))
         }).catch(err => console.log(err))
-    }, [dispatch, userId])
+    }, [dispatch])
 
     const view = (lootId) => {
         axios.get(`/msg/view/${lootId}`).then(res => {
