@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom';
 import {loginUser} from '../redux/authReducer';
 import axios from 'axios';
 import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
-import SingleCloud from '../assets/Clouds/SingleCloud/SingleCloud';
 import CloudSpan from '../assets/Clouds/CloudSpan/CloudSpan';
 import PaperPlanes from '../assets/Planes/PaperPlanes/PaperPlanes';
 

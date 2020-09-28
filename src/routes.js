@@ -10,8 +10,7 @@ import Signup from './components/Signup'
 import Welcome from './components/Welcome'
 import ViewMessage from './components/ViewMessage'
 import NewMessage from './components/NewMessage'
-import addFriend from './components/AddFriend'
-
+import AddFriend from './components/AddFriend'
 
 export default (
     <Switch>
@@ -21,6 +20,7 @@ export default (
         <Route path="/drops" component={MyDrops}/>
         <Route path="/loot" component={MyLoot}/>
         <Route path="/friends" component={MyFriends}/>
+        <Route path="/addFriends" component={AddFriend}/>
         <Route path="/map" component={MapView}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/viewMessage/:lootId" component={ViewMessage}/>

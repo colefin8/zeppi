@@ -8,6 +8,7 @@ import axios from 'axios';
 import ZeppiWithPlane from '../assets/ZeppiLogo/ZeppiWithPlane/ZeppiWithPlane';
 import CaretRightIcon from '../assets/icons/systemIcons/CaretRightIcon';
 import CaretLeftIcon from '../assets/icons/systemIcons/CaretLeftIcon';
+
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const history = useHistory()
