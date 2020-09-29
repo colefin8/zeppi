@@ -21,6 +21,7 @@ module.exports = {
         const db = req.app.get('db');
         const {userId}= req.params
         db.all_friends(userId).then(friend=>{
+            console.log(friend)
             res.status(200).send(friend)
         }).catch(err=>console.log(err))
     },
@@ -45,5 +46,11 @@ module.exports = {
             res.status(200).send(requests)
         }).catch(err=>console.log(err))
     },
-
+    findFriend:(req, res) => {
+        const db = req.app.get('db')
+        const {userId} = req.params
+        db.other_users(userId).then(users => {
+            res.status(200).send(users)
+        }).catch(err => console.log(err))
+    }
 }
