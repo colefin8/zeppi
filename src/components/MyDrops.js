@@ -21,6 +21,7 @@ function MyDrops() {
     
     return (
         <div className="MyDrops dashboard-page">
+            {console.log(totalDrops)}
             <AddMessageButton/>
             <div className="page-container">
                 <div className="page-title">
