@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {usePosition} from './Location';
 import AddressBook from './AddressBook';
 import {getFriends} from '../redux/friendReducer';
+import {getUser} from '../redux/authReducer';
 import axios from 'axios';
 
 function NewMessage() {
@@ -11,9 +12,9 @@ function NewMessage() {
     const history = useHistory()
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.authReducer)
-    const {userId}  = user
+    const {userId, totalDrops}  = user
     const {latitude, longitude} = usePosition();
-    const [receiver, setReceiver] = useState(0)
+    const [receiver, setReceiver] = useState('')
     const [message, setMessage] = useState('')
     const {friends} = useSelector((state) => state.friendReducer)
 
@@ -25,18 +26,22 @@ function NewMessage() {
 
     const newMessage =  () => {
         const sender = userId
-
-        console.log(latitude, longitude)
+        const newTotal = totalDrops + 1
         axios.post('/msg/newMsg', {message, sender, receiver, latitude, longitude}).then(() => {
-                history.push('/drops')
+            axios.put('/msg/totalDrops', {userId, newTotal}).then(() => {
+                axios.get('/auth/user').then(res => {
+                    dispatch(getUser(res.data))
+                })
+            })    
         }).catch(err => console.log(err))
-        
+        history.push('/drops')
     }
 
     const addressBook = friends.map((friend, index) => <AddressBook key={index} friend={friend}/>)
 
     return (
         <div className="NewMessage dashboard-page">
+            {console.log(receiver)}
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">New Drop</h1>
@@ -50,8 +55,9 @@ function NewMessage() {
                                         <select 
                                         value={receiver}
                                         className="page-input"
-                                        onChange={(e) => setReceiver(+e.target.value)}>
-                                            {addressBook}   
+                                        onChange={(e) => setReceiver(e.target.value)}>
+                                            <option disabled value=''>Recipient</option>
+                                            {addressBook}
                                         </select>
                                     </div>
                                 </div>

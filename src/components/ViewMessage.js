@@ -1,18 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {usePosition} from './Location';
+import {getUser} from '../redux/authReducer';
 import axios from 'axios';
 
 function ViewMessage() {
 
     const history = useHistory()
+    const dispatch = useDispatch()
     const {viewMessage} = useSelector((state) => state.msgReducer)
+    const {user} = useSelector((state) => state.authReducer)
     const {latitude, longitude} = usePosition()
     const {message_id, lat, long} = viewMessage
     const [match, setMatch] = useState(false)
     const [result, setResult] = useState({})
     const {message, sender, receiver} = result
+    const {userId, totalLoot} = user
 
     useEffect(() => {
         const lootId = message_id
@@ -27,7 +31,15 @@ function ViewMessage() {
     }, [message_id, lat, long, latitude, longitude])
 
     const close = () => {
+        const newTotal = totalLoot + 1
         setMatch(false)
+        axios.put('/msg/totalLoot', {userId, newTotal}).then(() => {
+            axios.delete(`/msg/delete/${message_id}`).then(() => {
+                axios.get('/auth/user').then(res => {
+                    dispatch(getUser(res.data))
+                }).catch(err => console.log(err))
+            }).catch(err => console.log(err))
+        }).catch(err => console.log(err))
         history.push('/loot')
     }
 

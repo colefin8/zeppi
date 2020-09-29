@@ -18,7 +18,9 @@ module.exports = {
         lastName: newUser[0].last_name,
         phoneNumber: newUser[0].phone_number,
         email: newUser[0].email,
-        message: newUser[0].message
+        message: newUser[0].message,
+        totalLoot: newUser[0].total_loot,
+        totalDrops: newUser[0].total_drops
     }
     res.status(200).send(req.session.user)
 },
@@ -38,7 +40,9 @@ module.exports = {
                     lastName: user[0].last_name,
                     phone: user[0].phone_number,
                     email: user[0].email,
-                    message: user[0].message
+                    message: user[0].message,
+                    totalLoot: user[0].total_loot,
+                    totalDrops: user[0].total_drops
 
                     }
                 res.status(200).send(req.session.user)
