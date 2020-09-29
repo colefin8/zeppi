@@ -1,7 +1,9 @@
--- SELECT friends.id, a.user_name, b.user_name FROM friends
---     JOIN users a ON user_one = a.user_id
---     JOIN users b ON user_two = b.user_id
--- WHERE (user_one = $1 OR user_two = $1) AND status = 'ACCEPTED';
-
--- SELECT user_name FROM friends
--- WHERE user_id
+SELECT u.user_name, u.first_name, u.last_name
+FROM users u
+WHERE NOT EXISTS (SELECT 1
+FROM friends f
+WHERE f.user_one = $1 AND f.user_two = u.user_id)
+AND NOT EXISTS (SELECT 1
+FROM friends f
+WHERE f.user_two = $1 AND f.user_one = u.user_id)
+AND u.user_id <> $1;

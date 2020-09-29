@@ -45,5 +45,12 @@ module.exports = {
             res.status(200).send(requests)
         }).catch(err=>console.log(err))
     },
+    findFriend:(req, res)=>{
+        const db = req.app.get('db');
+        const{userId}= req.params
+        db.other_users(userId).then(friend =>{
+            res.status(200).send(friend)
+        }).catch(err=>console.log(err))
+    }
 
 }

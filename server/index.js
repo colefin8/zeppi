@@ -50,6 +50,7 @@ app.get('/friends/all/:userId', friendCtrl.allFriends)
 app.put('/friends/accept/:friendId/:userId', friendCtrl.acceptRequest)
 app.get('/friends/request/:userId', friendCtrl.getRequest)
 app.put('/friends/deny/:friendId/:userId', friendCtrl.denyRequest)
+app.get('/friends/find/:userId', friendCtrl.findFriend)
 
 
 

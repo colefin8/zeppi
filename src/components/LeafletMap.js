@@ -55,7 +55,9 @@ const LeafletMap = (props) => {
           hasLocation: true,
           latlng: e.latlng,
         })
-        console.log(userLocation);
+        // console.log('latlng', latlng)
+        console.log('?',userLocation);
+     
     }
     
     const handleClick = (e) => {
@@ -104,6 +106,7 @@ const LeafletMap = (props) => {
         }}
         className={'droppable'}
         >
+            
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
