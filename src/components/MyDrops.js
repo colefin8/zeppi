@@ -17,7 +17,7 @@ function MyDrops() {
             console.log(res.data)
             dispatch(getDrops(res.data))
         }).catch(err => console.log(err))
-    }, [dispatch])
+    }, [dispatch, userId])
     
     return (
         <div className="MyDrops dashboard-page">
@@ -50,7 +50,7 @@ function MyDrops() {
                             <p className=" table-title phrase-blue">Active Drops</p>
                         </div>
                         <div className="table-content">
-                            {drops.map(item => <div className="table-row"><DropSnapshot key={item.message_id} drop={item}/></div>)}
+                            {drops.map((item, index) => <div className="table-row"><DropSnapshot key={index} drop={item}/></div>)}
                         </div>
                         <div className="table-footer">
                             <p className="caption-red">SHOW MORE</p>
