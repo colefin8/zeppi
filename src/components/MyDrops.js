@@ -10,7 +10,7 @@ function MyDrops() {
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.authReducer)
     const {drops} = useSelector((state) => state.msgReducer)
-    const {userId} = user
+    const {userId, totalDrops} = user
 
     useEffect(() => {
         axios.get(`/msg/drops/${userId}`).then(res => {
@@ -32,14 +32,14 @@ function MyDrops() {
                         <div className="half-box">
                             <div className="highlight-container">
                                 <div className="highlight-type">Active</div>
-                                <div className="highlight-count highlight-red">23</div>
+                                <div className="highlight-count highlight-red">{drops.length}</div>
                                 <div className="highlight-focus">Drops</div>
                             </div>
                         </div>
                         <div className="half-box">
                             <div className="highlight-container">
                                 <div className="highlight-type">Total</div>
-                                <div className="highlight-count highlight">142</div>
+                                <div className="highlight-count highlight">{totalDrops}</div>
                                 <div className="highlight-focus">Drops</div>
                             </div>
                         </div>

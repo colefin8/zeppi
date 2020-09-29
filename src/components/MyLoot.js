@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Snapshot from './Snapshot';
@@ -11,13 +11,18 @@ function MyLoot() {
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.authReducer)
     const {loot} = useSelector((state) => state.msgReducer)
-    const {userId} = user
+    const {userId, totalLoot} = user
+    const [activeLoot, setActiveLoot] = useState(0)
 
     useEffect(() => {
         axios.get(`/msg/loot/${userId}`).then(res => {
             console.log(res.data)
             dispatch(getLoot(res.data))
         }).catch(err => console.log(err))
+
+        axios.get(`/msg/activeLoot/${userId}`).then(res => {
+            setActiveLoot(res.data)
+        })
     }, [dispatch, userId])
 
     const view = (lootId) => {
@@ -39,14 +44,14 @@ function MyLoot() {
                         <div className="half-box">
                             <div className="highlight-container">
                                 <div className="highlight-type">Pending</div>
-                                <div className="highlight-count highlight-warning">12</div>
+                                <div className="highlight-count highlight-warning">{loot.length}</div>
                                 <div className="highlight-focus">Loot</div>
                             </div>
                         </div>
                         <div className="half-box">
                             <div className="highlight-container">
                                 <div className="highlight-type">Total</div>
-                                <div className="highlight-count highlight">117</div>
+                                <div className="highlight-count highlight">{totalLoot}</div>
                                 <div className="highlight-focus">Loot</div>
                             </div>
                         </div>
