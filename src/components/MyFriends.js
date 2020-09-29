@@ -4,6 +4,7 @@ import Request from './Request';
 import {useDispatch, useSelector} from 'react-redux';
 import {getFriends, getRequests} from '../redux/friendReducer';
 import axios from 'axios';
+import AddFriendButton from './AddFriendButton';
 
 function MyFriends() {
 
@@ -45,7 +46,9 @@ function MyFriends() {
 
     return (
         <div className="MyFriends dashboard-page">
-            {console.log(friends[0])}
+
+            <AddFriendButton/>
+
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">My Friends</h1>

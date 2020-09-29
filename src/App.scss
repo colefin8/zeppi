@@ -680,8 +680,28 @@
   @extend .align-center;
 }
 
+.modal-overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 2001;
+  @extend .flex-column;
+  @extend .justify-center;
+  @extend .align-center;
+}
+
 .page-container {
   width: 100%;
+  @extend .container;
+}
+
+.modal-container {
+  width: 100%;
+  @extend .m-t-2;
+  background-color: $white-primary;
   @extend .container;
 }
 
@@ -906,6 +926,17 @@
   @extend .m-t-25;
 }
 
+.color {
+  &-blue {
+    color: $blue-primary;
+  }
+  &-red {
+    color: $red-primary;
+  }
+  &-gray {
+    color: $font-color;
+  }
+}
 // SIDENAV BAR STYLING
 
 .Navbar {
@@ -987,6 +1018,12 @@
    }
   to { width: 0%; pointer-events: none; cursor: not-allowed;}
 }
+
+// Leaflet Map Styling classes
+.addDrop {
+  cursor: crosshair;
+}
+
 
 // Custom Styling to get clouds to work but this will
 // be redone with design system extend styling to be
@@ -1092,19 +1129,17 @@
 .ConsoleButton{
   @extend .flex;
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1rem;
+  right: 1rem;
   @extend .justify-center;
   @extend .align-center;
-  @extend .m-v-1;
   @extend .radius-4;
-  background-color: $red-primary;
   pointer-events: all;
   z-index: 2000;
   @include transition(all 1s);
   .SettingIcon {
     @extend .m-a-50;
-    color: rgba(255, 255, 255, 0.85);
+    color: $red-primary;
     pointer-events: all;
   }
 }
