@@ -6,7 +6,9 @@ CREATE TABLE IF NOT EXISTS users
     last_name VARCHAR(40) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    total_drops INT, 
+    total_loot INT 
 );
 
 CREATE TABLE IF NOT EXISTS messages

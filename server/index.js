@@ -43,6 +43,10 @@ app.get('/msg/loot/:userId', msgCtrl.getLoot)
 app.get('/msg/drops/:userId', msgCtrl.getDrops)
 app.get('/msg/view/:lootId', msgCtrl.getMsg)
 app.get('/msg/match/:lootId/:latitude/:longitude', msgCtrl.messageMatch)
+app.get('/msg/activeLoot/:userId', msgCtrl.activeLoot)
+app.get('/msg/activeDrop/:userId', msgCtrl.activeDrop)
+app.put('/msg/totalLoot/:userId', msgCtrl.totalLoot)
+app.put('/msg/totalDrop/:userId', msgCtrl.totalDrops)
 
 //Connections(friend's List) 
 app.post('/friends/newFriend', friendCtrl.addFriend)
@@ -52,6 +56,7 @@ app.get('/friends/request/:userId', friendCtrl.getRequest)
 app.put('/friends/deny/:friendId/:userId', friendCtrl.denyRequest)
 app.get('/friends/find/:userId', friendCtrl.findFriend)
 
+//
 
 
 app.listen(SERVER_PORT, () => console.log(`Connected to port ${SERVER_PORT}`));

@@ -3,4 +3,4 @@ SELECT
 FROM
     messages
 WHERE
-   messages.sender = $1 ;
+    sender = $1
