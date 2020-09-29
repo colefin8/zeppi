@@ -52,6 +52,7 @@ function NewMessage() {
                             <div className="full-box">
                                 <div className="container__row justify-between">
                                     <div className="container__col-22 container__col-offset-1">
+                                        <label className="caption-blue m-t-1">Recipient</label>
                                         <select 
                                         value={receiver}
                                         className="page-input"

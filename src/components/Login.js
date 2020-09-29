@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {loginUser} from '../redux/authReducer';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
 import CloudSpan from '../assets/Clouds/CloudSpan/CloudSpan';
@@ -28,16 +29,15 @@ function Login() {
         <div className="Login">
                 <div className="SignupRow">
                     <div className="SignupButton">
-                
                     </div>
                 </div>
                 <div className="AuthForm">
                     <div className="container__row">
                         <div className="LoginForm">
                             <div className="container__row">
-                                <div className="AuthLogo">
+                                <Link to="/" className="AuthLogo">
                                     <ZeppiCloud/>
-                                </div>
+                                </Link>
                                 <h1 className="AuthTitle">ACCOUNT LOGIN</h1>
                                 <div className="container__row justify-center">
                                     <input 
@@ -50,18 +50,16 @@ function Login() {
                                     <input 
                                         className="AuthInput"
                                         placeholder="Password"
+                                        type="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}></input>
                                 </div>
                                 <div className="container__row justify-center">
                                     <button className="AuthSubmit" onClick={handleLogin}>LOGIN</button>
                                 </div>
-                                <div className="container__row justify-center">
-                                    <h2 className="auth-form-link">Forgot password?</h2>
-                                </div>
-                                <div className="container__row justify-center">
+                                <Link to="/signup" className="container__row justify-center textDecor">
                                     <h2 className="auth-form-link m-b-1">Dont have an account?</h2>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

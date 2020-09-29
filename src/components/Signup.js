@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {loginUser} from '../redux/authReducer';
 import axios from 'axios';
 import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
@@ -24,7 +25,7 @@ function Signup() {
         if(password === confirm){
             axios.post('/auth/register', {username, firstName, lastName, phone, email, password}).then(res => {
                 dispatch(loginUser(res.data))
-                history.push('/dash')
+                history.push('/map')
             }).catch(err => {
                 console.log(err)
                 alert('Could not register with provided information.')
@@ -44,9 +45,9 @@ function Signup() {
                 <div className="container__row">
                     <div className="LoginForm">
                         <div className="container__row">
-                            <div className="AuthLogo">
+                            <Link to="/" className="AuthLogo">
                                 <ZeppiCloud/>
-                            </div>
+                            </Link>
                             <h1 className="AuthTitle">ACCOUNT SIGNUP</h1>
                             <div className="container__row justify-center">
                                 <input 
@@ -87,6 +88,7 @@ function Signup() {
                                 <input 
                                     className="AuthInput"
                                     placeholder="Password" 
+                                    type="password"
                                     value={password} 
                                     onChange={(e) => setPassword(e.target.value)}></input>
                             </div>
@@ -94,6 +96,7 @@ function Signup() {
                                 <input 
                                     className="AuthInput"
                                     placeholder="Confirm Password" 
+                                    type="password"
                                     value={confirm} 
                                     onChange={(e) => setConfirm(e.target.value)}></input>
                             </div>
@@ -101,13 +104,10 @@ function Signup() {
                                 <button className="AuthSubmit" onClick={handleRegister}>SIGN UP</button>
                             </div>
                             <div className="container__row justify-center align-center">
-                                <h2 className="auth-form-link">Forgot password?</h2>
-                            </div>
-                            <div className="container__row justify-center align-center">
-                                <div className="flex"> 
+                                <Link to="/login" className="flex textDecor">
                                     <ArrowLeftIcon className="auth-form-link" height=".8rem"/>
                                     <h2 className="auth-form-link">Back to Login</h2>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

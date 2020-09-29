@@ -298,6 +298,9 @@
     &-2 {
       margin-bottom: 2rem;
     }
+    &-3 {
+      margin-bottom: 3rem;
+    }
   }
   &-v {
     &-auto {
@@ -904,13 +907,13 @@
 
 .AuthInput {
   @extend .input;
-  @extend .m-t-25;
+  @extend .m-t-50;
   @extend .container__col-24;
 }
 
 .AuthSubmit {
   @extend .btn-lg-red;
-  @extend .m-t-50;
+  @extend .m-t-1;
   @extend .container__col-24;
 }
 
@@ -1024,7 +1027,9 @@
   cursor: crosshair;
 }
 
-
+.textDecor {
+  text-decoration: none;
+}
 // Custom Styling to get clouds to work but this will
 // be redone with design system extend styling to be
 // universal
