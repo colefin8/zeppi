@@ -51,5 +51,34 @@ module.exports = {
         db.message([lootId, latitude, longitude]).then(message=>{
             res.status(200).send(message)
         }).catch(err=> console.log(err))
+    },
+    activeLoot:(req, res)=>{
+        const db= req.app.get('db');
+        const {userId}=req.params
+        db.active_drops(userId).then(messages=>{
+            res.status(200).send(messages)
+        }).catch(err=>console.log(err))
+    },
+    activeDrop:(req,res)=>{
+        const db = req.app.get('db');
+        const{userId}=req.params
+        db.active_drops(userId).then(messages=>{
+            res.status(200).send(messages)
+        }).catch(err=>console.log(err))
+    },
+    totalLoot:(req,res)=>{
+        const db = req.app.get('db');
+        const{userId, newTotal}=req.body
+        db.total_loots([userId, newTotal]).then(total=>{
+            res.status(200).send(total)
+        }).catch(err=>console.log(err))
+    },
+    totalDrops:(req,res)=>{
+        const db = req.app.get('db');
+        const{userId, newTotal}=req.body
+        db.total_drops([userId, newTotal]).then(total=>{
+            res.status(200).send(total)
+        }).catch(err=>console.log(err))
     }
+
 }
