@@ -3,7 +3,7 @@ import routes from './routes';
 import {useDispatch} from 'react-redux'
 import {useLocation} from 'react-router-dom'
 import {getUser} from './redux/authReducer'
-import Nav from './components/Navbar'
+import Navbar from './components/Navbar'
 import './App.scss';
 import axios from 'axios';
 
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname !== '/' ? <Nav/> : null}
+      {(location.pathname !== '/' && location.pathname !== '/signup' && location.pathname !== '/login') ? <Navbar/> : null}
       {routes}
     </div>
   );

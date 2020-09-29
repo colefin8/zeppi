@@ -78,19 +78,19 @@ const LeafletMap = (props) => {
         if(isAddEnabled === true) {
             const coords = e.latlng;
             setNewPendingMarker({...newPendingMarker, coords})
-            
+            setIsAddEnabled(false)
         } else {
         }
     }
 
-    const handleAdd = () => {
-
+    const handleClose = (e) => {
+        setNewPendingMarker({})
+        setIsAddEnabled(false)
     }
 
-    console.log(newPendingMarker)
     return (  
         <div className="LeafletMap">
-            {/* {isAddEnabled && newPendingMarker ? <NewMessageModal/> : <div></div>} */}
+            {isAddEnabled === false && newPendingMarker.coords ? <NewMessageModal handleClose={handleClose}/> : <div></div>}
             <Map 
             center={[37.0902, -95.7129]} 
             ref={mapRef}
