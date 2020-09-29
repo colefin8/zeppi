@@ -3,6 +3,7 @@ import DropSnapshot from './DropSnapshot';
 import {useDispatch, useSelector} from 'react-redux';
 import {getDrops} from '../redux/messageReducer';
 import axios from 'axios';
+import AddMessageButton from './AddMessageButton';
 
 function MyDrops() {
 
@@ -20,6 +21,7 @@ function MyDrops() {
     
     return (
         <div className="MyDrops dashboard-page">
+            <AddMessageButton/>
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">My Drops</h1>
