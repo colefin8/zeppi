@@ -69,15 +69,17 @@ module.exports = {
     totalLoot:(req,res)=>{
         const db = req.app.get('db');
         const{userId, newTotal}=req.body
-        db.total_loots([userId, newTotal]).then(total=>{
-            res.status(200).send(total)
+        db.total_loots([userId, newTotal]).then(user=>{
+            req.session.user.totalLoot = user[0].total_loot
+            res.status(200).send(user)
         }).catch(err=>console.log(err))
     },
     totalDrops:(req,res)=>{
         const db = req.app.get('db');
         const{userId, newTotal}=req.body
-        db.total_drops([userId, newTotal]).then(total=>{
-            res.status(200).send(total)
+        db.total_drops([userId, newTotal]).then(user=>{
+            req.session.user.totalDrops = user[0].total_drops
+            res.status(200).send(user)
         }).catch(err=>console.log(err))
     }
 

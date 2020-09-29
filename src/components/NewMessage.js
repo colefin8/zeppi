@@ -31,17 +31,17 @@ function NewMessage() {
             axios.put('/msg/totalDrops', {userId, newTotal}).then(() => {
                 axios.get('/auth/user').then(res => {
                     dispatch(getUser(res.data))
+                    history.push('/drops')
                 })
             })    
         }).catch(err => console.log(err))
-        history.push('/drops')
+        
     }
 
     const addressBook = friends.map((friend, index) => <AddressBook key={index} friend={friend}/>)
 
     return (
         <div className="NewMessage dashboard-page">
-            {console.log(receiver)}
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">New Drop</h1>
