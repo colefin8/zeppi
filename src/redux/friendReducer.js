@@ -1,10 +1,12 @@
 const initialState = {
     friends: [],
-    requests: []
+    requests: [],
+    users: []
 }
 
 const GET_FRIENDS = 'GET_FRIENDS'
 const GET_REQUESTS = 'GET_REQUESTS'
+const GET_USERS = 'GET_USERS'
 
 export function getFriends(payload){
     console.log(payload)
@@ -22,6 +24,14 @@ export function getRequests(payload){
     }
 }
 
+export function getUsers(payload){
+    console.log(payload)
+    return {
+        type: GET_USERS,
+        payload: payload
+    }
+}
+
 export default function reducer(state = initialState, action){
     const {type, payload} = action
     switch(type){
@@ -29,6 +39,8 @@ export default function reducer(state = initialState, action){
             return {...state, friends: payload}
         case GET_REQUESTS:
             return {...state, requests: payload}
+        case GET_USERS:
+            return {...state, users: payload}
         default:
             return state
     }
