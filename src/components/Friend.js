@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux'
 import ExpandAltIcon from '../assets/icons/systemIcons/ExpandAltIcon';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 
 function Friend(props) {
 
-    const {user_name} = props.friend
+    const [friendName, setFriend] = useState('')
+    const {user_a, user_b, id} = props.friend
+    const {user} = useSelector((state) => state.authReducer)
+    const {username} = user
+
+    useEffect(() => {
+    if(user_a === username){
+        return setFriend(user_b)
+    } else if (user_b === username){
+        return setFriend(user_a)
+    };
+
+}, [user_a, user_b, username]);
 
     return (
         <div className="snapshot">
@@ -14,8 +27,8 @@ function Friend(props) {
                     <UserIcon className="m-h-auto" height="1.5rem" width="1.5rem"/>
                 </div>
                 <div className="snapshot-info">
-                    <h1 className="body-blue">Username</h1>
-                    <h2 className="caption-blue m-t-50">@{user_name}</h2>
+                    <h1 className="body-blue">{friendName}</h1>
+                    <h2 className="caption-blue m-t-50">@{friendName}</h2>
                 </div>
             </div>
             <div className="snapshot-action">

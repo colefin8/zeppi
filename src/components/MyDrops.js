@@ -3,6 +3,7 @@ import DropSnapshot from './DropSnapshot';
 import {useDispatch, useSelector} from 'react-redux';
 import {getDrops} from '../redux/messageReducer';
 import axios from 'axios';
+import AddMessageButton from './AddMessageButton';
 
 function MyDrops() {
 
@@ -16,10 +17,11 @@ function MyDrops() {
             console.log(res.data)
             dispatch(getDrops(res.data))
         }).catch(err => console.log(err))
-    }, [dispatch])
+    }, [dispatch, userId])
     
     return (
         <div className="MyDrops dashboard-page">
+            <AddMessageButton/>
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">My Drops</h1>
@@ -48,7 +50,7 @@ function MyDrops() {
                             <p className=" table-title phrase-blue">Active Drops</p>
                         </div>
                         <div className="table-content">
-                            {drops.map(item => <div className="table-row"><DropSnapshot key={item.message_id} drop={item}/></div>)}
+                            {drops.map((item, index) => <div className="table-row"><DropSnapshot key={index} drop={item}/></div>)}
                         </div>
                         <div className="table-footer">
                             <p className="caption-red">SHOW MORE</p>
