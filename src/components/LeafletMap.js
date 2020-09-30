@@ -1,39 +1,42 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { Map, Marker, Popup, TileLayer, ZoomControl, Circle } from "react-leaflet";
 import L from 'leaflet';
 import Control from 'react-leaflet-control';
 import ReactDOMServer from 'react-dom/server';
-
+import {useDispatch, useSelector} from 'react-redux';
 import AddDropIcon from '../assets/AddDropIcon/AddDropIcon';
 import DropIcon from '../assets/DropIcon/DropIcon';
 import LootIcon from '../assets/LootIcon/LootIcon';
 import CurrentLocation from '../assets/CurrentLocation/CurrentLocation';
 import UserIcon from '../assets/UserIcon/UserIcon';
 import NewMessageModal from "./NewMessageModal";
+import {getDrops} from '../redux/messageReducer';
+import {getLoot} from '../redux/messageReducer';
+import axios from 'axios';
 
 
-const LeafletMap = (props) => {
+const LeafletMap = () => {
     const mapRef = useRef(null);
     const [userLocation, setUserLocation] = useState({});
     const [isAddEnabled, setIsAddEnabled] = useState(false);
-    const [newPendingMarker, setNewPendingMarker] = useState({});
+    const [lat, setLatitude] = useState();
+    const [long, setLongitude] = useState()
+    const dispatch = useDispatch()
+    const {drops} = useSelector((state) => state.msgReducer)
+    const {loot} = useSelector((state) => state.msgReducer)
+    const {user} = useSelector((state) => state.authReducer)
+    const {userId} = user;
 
+    useEffect(() => {
+        axios.get(`/msg/loot/${userId}`).then(res => {
+            dispatch(getLoot(res.data))
+        }).catch(err => console.log(err))
+        axios.get(`/msg/drops/${userId}`).then(res => {
+            dispatch(getDrops(res.data))
+        }).catch(err => console.log(err))
+    }, [dispatch, userId])
     // drops, icon, looticon, dropicon all used for rendering the users current drops and loot items on the map
-    const drops = [
-        {
-            id: '1',
-            to: "@KrabbyP456",
-            coordinates: [32.9495976,-96.9982201]
-        }
-    ];
-    
-    const loot = [
-        {
-            id: '1',
-            from: "@Squidman2234",
-            coordinates: [33.6659229,-95.4699559]
-        }
-    ];
+
 
     const lootIcon = L.divIcon({
         className: 'custom-icon',
@@ -76,21 +79,22 @@ const LeafletMap = (props) => {
 
     const addMarker = (e) => {
         if(isAddEnabled === true) {
-            const coords = e.latlng;
-            setNewPendingMarker({...newPendingMarker, coords})
-            setIsAddEnabled(false)
+            setLatitude(e.latlng.lat)
+            setLongitude(e.latlng.lng)
         } else {
+
         }
     }
 
     const handleClose = () => {
-        setNewPendingMarker({})
+        setLatitude();
+        setLongitude();
         setIsAddEnabled(false)
     }
-
     return (  
         <div className="LeafletMap">
-            {isAddEnabled === false && newPendingMarker.coords ? <NewMessageModal handleClose={handleClose}/> : <div></div>}
+            
+            {isAddEnabled && lat && long ? <NewMessageModal longitude={long} latitude={lat} handleClose={handleClose}/> : null}
             <Map 
             center={[37.0902, -95.7129]} 
             ref={mapRef}
@@ -116,36 +120,36 @@ const LeafletMap = (props) => {
                     <AddDropIcon className={isAddEnabled ? "color-red" : "color-gray"} onClick={e => setIsAddEnabled(!isAddEnabled)} />       
                 </Control>
                 {/* Map lists for each drop and list for the current user */}
-                {loot.map(lootMessage => (
+                {loot.map((lootMessage, index) => (
                     <Marker
-                    key={lootMessage.id}
+                    key={index}
                     icon={lootIcon}
                     position={[
-                        lootMessage.coordinates[0],
-                        lootMessage.coordinates[1]
+                        lootMessage.lat,
+                        lootMessage.long
                     ]}>
-                        <Popup>
+                        <Popup key={lootMessage.id}>
                             Loot!<br/>
-                            From: {lootMessage.from}
+                            From: {lootMessage.sender_name}
                         </Popup>
                     </Marker>
                 ))}
-                {drops.map(dropMessage => (
+                {drops.map((dropMessage, index) => (
                     <Marker
-                    key={dropMessage.id}
+                    key={index}
                     icon={dropIcon}
                     position={[
-                        dropMessage.coordinates[0],
-                        dropMessage.coordinates[1]
+                        dropMessage.lat,
+                        dropMessage.long
                     ]}>
-                        <Popup>
+                        <Popup key={dropMessage.id}>
                             Your Drop<br/>
-                            To: {dropMessage.to}
+                            To: {dropMessage.receiver_name}
                         </Popup>
                     </Marker>
                 ))}
                 {/* This section shows the user location when the current location control button is pressed */}
-                {userLocation.hasLocation === true ? <Marker icon={userIcon} position={[userLocation.latlng.lat, userLocation.latlng.lng]}><Circle radius={1300} center={[userLocation.latlng.lat, userLocation.latlng.lng]}></Circle></Marker> : ()=> {}}
+                {userLocation.hasLocation === true ? <Marker icon={userIcon} position={[userLocation.latlng.lat, userLocation.latlng.lng]}><Circle radius={40} center={[userLocation.latlng.lat, userLocation.latlng.lng]}></Circle></Marker> : ()=> {}}
             </Map>
         </div>
     );
