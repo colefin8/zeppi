@@ -67,7 +67,6 @@ function MyLoot() {
                             {loot.map(item =><div className="table-row"><Snapshot key={item.message_id} loot={item} view={view}/></div>)}
                         </div>
                         <div className="table-footer">
-                            <p className="caption-red">SHOW MORE</p>
                         </div>
                     </div>
                 </div>

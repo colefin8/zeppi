@@ -1,6 +1,9 @@
 @import './styling/mixins';
 @import './styling/variables';
 
+* {
+  box-sizing: border-box;
+}
 // GRID CLASSES
 @each $modifier , $breakpoint in $map-grid-props {
   @if($modifier == '') {
@@ -113,6 +116,12 @@
   &-blue {
     @extend .body;
     color: $blue-primary;
+  }
+  &-red {
+    @extend .body;
+    color: $red-primary;
+    font-weight: $font-regular;
+    font-family: $lato;    
   }
 }
 
@@ -289,6 +298,9 @@
     }
   }
   &-b {
+    &-25 {
+      margin-bottom: .25rem;
+    }
     &-50 {
       margin-bottom: .5rem;
     }
@@ -526,6 +538,18 @@
   }
 }
 
+.color {
+  &-blue {
+    color: $blue-primary;
+  }
+  &-red {
+    color: $red-primary;
+  }
+  &-gray {
+    color: $font-color;
+  }
+}
+
 // Hide Element
 .hidden {
   display: none;
@@ -543,6 +567,9 @@
 .disabled {
   cursor: not-allowed;
   pointer-events: none;
+  outline: none;
+  background: none;
+  color: $blue-primary;
 }
 
 // ANIMATION
@@ -573,6 +600,34 @@
 }
 
 // INPUTS
+.FormInput {
+  &:focus-within {
+    .label {
+        color: $blue-primary; 
+    }
+    .input {
+      border-color: $blue-primary;
+    }
+  }
+  &.valid:focus-within {
+    .label {
+        color: $success-color; 
+    }
+    .input {
+      border-color: $success-color;
+    }
+  }
+  &.invalid:focus-within {
+    .label {
+        color: $red-primary; 
+    }
+    .input {
+      border-color: $red-primary;
+    }
+  }
+  
+}
+
 .input {
   padding: .75rem;
   border: solid 1px $blue-primary;
@@ -580,6 +635,66 @@
   background: $white-secondary;
   outline: 0;
   color: $blue-primary;
+  &.valid {
+    border-color: $success-color;
+  }
+  &.invalid {
+    border-color: $red-primary;
+  }
+}
+
+.label {
+  transition: // not padding
+  background 0.2s,
+  color 0.2s,
+  top 0.2s,
+  bottom 0.2s,
+  right 0.2s,
+  left 0.2s;
+  font-size: 70%;
+  visibility: hidden;
+  padding: 3px 4px;
+  font-family: $roboto;
+  &.valid {
+    visibility: visible;
+    color: $success-color;
+  }
+  &.invalid {
+    visibility: visible;
+    color: $red-primary;
+  }
+}
+
+.inlineCaption {
+  font-size: $inlineCaption;
+  font-weight: $font-regular;
+  font-family: $roboto;
+  color: $font-color;
+  &-blue {
+    @extend .caption;
+    color: $blue-primary;
+  }
+  &-error {
+    @extend .caption;
+    color: $red-primary;
+  }
+  &-warning {
+    @extend .caption;
+    color: $warning-color;
+  }
+  &-success {
+    @extend .caption;
+    color: $success-color;
+  }
+  &-white {
+    @extend .caption;
+    color: $white-primary;
+  }
+  &-red {
+    @extend .caption;
+    color: $red-primary;
+  }
+
 }
 
 .page-input {
@@ -591,6 +706,24 @@
   outline: 0;
   color: $blue-primary;
   font-family: $lato;
+}
+
+.text-container {
+  @extend .container__row;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: 100%;
+}
+
+.text-display {
+  @extend .p-v-1;
+  @extend .container__col-22;
+  @extend .container__col-offset-1;
+  max-width: 100%;
+  height: 100%;
+  color: $blue-primary;
+  font-family: $lato;
+  font-size: $phrase;
 }
 
 // BUTTONS
@@ -644,9 +777,16 @@
       @extend .btn-lg;
       @include btn-theme($red-primary, $red-primary, $white-primary);
     }
+    &-yellow {
+      @extend .btn-lg;
+      @include btn-theme($warning-color, $warning-color, $white-primary);
+    }
   }
 }
 
+.inputIcon {
+  color: $blue-primary;
+}
 // link styling
 .link {
   color: $blue-primary;
@@ -666,16 +806,31 @@
   }
 }
 
+// DIRECT COMPONENT STYLING NO LONGER GENERAL
 // APP STYLING AND CLASSES
-.App, .Welcome, .Login, .SimpleReactMap {
-    width: 100%;
-    height: 100%;
+body {
+  background: $blue-gradient-bg;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
 }
 
 .App {
-  background: $blue-gradient-bg;
+  width: 100%;
+  height: 100%;
 }
 
+.Welcome {
+  width: 100%;
+  height: 100%;
+}
+
+// GENERAL DASHBAORD STYLING
 .dashboard-page {
   height: 100%;
   @extend .flex-column;
@@ -824,60 +979,40 @@
   }
 }
 
-.SimpleReactMap {
-  background: $blue-gradient-bg;
-}
 
-.leaflet-container {
+// AUTH STYLING
+.auth-page {
   width: 100%;
-  height: 100vh;
-}
-
-.mapConsole {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  height: 100px;
-  width: 100px;
-  background: $blue-gradient-bg;
-  border-radius: 5px;
-  z-index: 2000;
-  
+  height: 100%;
 }
 
 .Login {
-  background: $blue-gradient-bg;
-  @extend .flex-column;
-  @extend .justify-between;
-  @media(max-width: 1280px) {
-    height: 100%;
-    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.Signup {
+  width: 100%;
+  @media(max-height: 800px) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
-  @media(min-width: 1280px){
-    overflow: hidden;
-    height: 100vh;
-  }
+  @media(min-height: 800px){
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    }
 
-}
-
-.SignupRow {
-  @extend .flex;
-  height: 3rem;
-}
-
-.SignupButton {
-  @extend .container__col-10;
-  @extend .m-r-1;
-}
-
-.SingleCloud {
-  @extend .container__col-10;
-  @extend .m-r-1;
 }
 
 .AuthForm {
   @extend .container;
-  @extend .container__row;
 }
 
 .LoginForm {
@@ -902,7 +1037,7 @@
   @extend .container__row;
   @extend .justify-center;
   @extend .m-t-1;
-  @extend .m-b-50;
+  @extend .m-b-25;
 }
 
 .AuthInput {
@@ -919,29 +1054,18 @@
 
 .auth-form-link {
   @extend .m-t-1;
-  @extend .body-white;
+  @extend .body-red;
 }
 
 .GraphicRow {
-  min-width: 100%;
-  @extend .flex-column;
-  @extend .justify-end;
-  @extend .m-t-25;
+  position: fixed;
+  bottom: 0;
+  @extend .container__row;
+  z-index: -1;
 }
 
-.color {
-  &-blue {
-    color: $blue-primary;
-  }
-  &-red {
-    color: $red-primary;
-  }
-  &-gray {
-    color: $font-color;
-  }
-}
+
 // SIDENAV BAR STYLING
-
 .Navbar {
   position: fixed;
   bottom: 0px;
@@ -1022,7 +1146,8 @@
   to { width: 0%; pointer-events: none; cursor: not-allowed;}
 }
 
-// Leaflet Map Styling classes
+
+// MAP STYLING
 .addDrop {
   cursor: crosshair;
 }
@@ -1030,9 +1155,29 @@
 .textDecor {
   text-decoration: none;
 }
-// Custom Styling to get clouds to work but this will
-// be redone with design system extend styling to be
-// universal
+
+.SimpleReactMap {
+  background: $blue-gradient-bg;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.mapConsole {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 100px;
+  width: 100px;
+  background: $blue-gradient-bg;
+  border-radius: 5px;
+  z-index: 2000;
+  
+}
+
+
 // WELCOME STYLING AND CLASS COMPONENTS
 .cloud-container {
   position: fixed;
@@ -1044,9 +1189,9 @@
 .nav-bar {
   @extend .container__row;
   @media(max-width: 768px) {
-    background-color: $blue-primary;
+    background-color: $red-primary;
   }
-  @media(min-width: 769px){
+  @media(min-width: 768px){
     background-color: transparent;
   }
 }
@@ -1069,42 +1214,44 @@
   @extend .rotate-half;
 }
 
-.zeppi-text {
+.welcome-logo {
   @extend .container__col-md-4;
   @extend .container__col-md-offset-1;
-  @extend .container__col-16;
-  @extend .container__col-offset-4;
+  @extend .container__col-18;
+  @extend .container__col-offset-3;
   @extend .m-v-2;
+    color: $white-primary;
 }
 
 .header-buttons{
-  @extend .container__col-md-17;
+  @extend .container__col-lg-18;
+  @extend .container__col-lg-offset-5;
+  @extend .container__col-md-22;
   @extend .container__col-md-offset-1;
-  @extend .container__col-16;
-  @extend .container__col-offset-4;
+  @extend .container__col-12;
+  @extend .container__col-offset-6;
+  @extend .m-v-1;
 }
 
 .login-button {
-  @extend .btn-lg-red;  
+  @extend .btn-lg-white;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-1;
   @extend .container__col-24;
-  @extend .m-v-2;
-
+  @extend .m-v-1;
 }
 
 .signup-button {
-  @extend .btn-lg-red;  
+  @extend .btn-lg-white;  
   @extend .container__col-md-3;
   @extend .container__col-md-offset-1;
   @extend .container__col-24;
-  @extend .m-v-2;
-
+  @extend .m-v-1;
 }
 
 .preview-container {
   width: 100%;
-  background: $blue-gradient-bg;
+  height: 100vh;
 }
 
 .TopPageDiv {
@@ -1120,13 +1267,25 @@
   @extend .container__col-offset-3;
 }
 
+.plane-trail {
+  @extend .container__col-xl-5;
+  @extend .container__col-xl-offset-5;
+  @extend .container__col-md-6;
+  @extend .container__col-md-offset-5;
+  @extend .container__col-sm-10;
+  @extend .container__col-sm-offset-5;
+  @extend .container__col-18;
+  @extend .container__col-offset-3;
+}
+
 .CloudSpan {
-  @extend .container__row;
-  width: 100%;
+  @extend .container__col-24;
+  position: relative;
+  bottom: -40;
 }
 
 .RightBelowCloud {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: $white-primary;
 }
@@ -1147,4 +1306,30 @@
     color: $red-primary;
     pointer-events: all;
   }
+}
+
+.LoadingPopup {
+  background-color: rgba(0,0,0,0.3);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.spin-container {
+  width: 10rem;
+  height: 10rem;
+  @extend .rotate;
+  display: flex;
 }

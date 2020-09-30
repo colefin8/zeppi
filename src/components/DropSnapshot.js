@@ -1,5 +1,4 @@
 import React from 'react';
-import ExpandAltIcon from '../assets/icons/systemIcons/ExpandAltIcon';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 
 function DropSnapshot(props) {
@@ -17,7 +16,7 @@ function DropSnapshot(props) {
                     </div>
             </div>
             <div className="snapshot-action">
-                <ExpandAltIcon/>
+                {/* <ExpandAltIcon/> */}
             </div>
         </div>
     )

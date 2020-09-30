@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getUsers} from '../redux/friendReducer'
 import User from './User'
 import axios from 'axios';
-
+import SearchIcon from '../assets/icons/systemIcons/SearchIcon'
 
 
 function AddFriend() {
@@ -51,14 +51,19 @@ function AddFriend() {
                         <div className="container__row justify-between">
                             <div className="full-box">
                                 <div className="container__row justify-between">
-                                    <div className="container__col-22 container__col-offset-1">
-                                        <input 
-                                        value={nameSearch}
-                                        placeholder="Search Users..."
-                                        type="text"
-                                        onChange={(e) => setName(e.target.value)}
-                                        className="page-input"
-                                        ></input>
+                                    <div className="container__col-21 container__col-offset-1">
+                                        <div className="container__row justify-between">
+                                            <input 
+                                            value={nameSearch}
+                                            placeholder="Search Users..."
+                                            type="text"
+                                            onChange={(e) => setName(e.target.value)}
+                                            className="page-input"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="container__col-2">
+                                        <SearchIcon  width="1.3rem" height="1.3rem" className="inputIcon m-t-75" onClick={(e)=> {console.log(e, "line 52")}}/>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import EditIcon from '../assets/icons/systemIcons/EditIcon';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 
 function Account() {
@@ -27,9 +26,6 @@ function Account() {
                                             <h2 className="caption-blue m-t-50">@exampleUsername</h2>
                                         </div>
                                     </div>
-                                    <div className="snapshot-action">
-                                        <EditIcon onClick={() => {}}/>
-                                    </div>
                                 </div>
                             </div>
                             <div className="table-row">  
@@ -39,9 +35,6 @@ function Account() {
                                             <h1 className="body-blue">Email</h1>
                                             <h2 className="caption-blue m-t-50">example@email.com</h2>
                                         </div>
-                                    </div>
-                                    <div className="snapshot-action">
-                                        <EditIcon onClick={() => {}}/>
                                     </div>
                                 </div>
                             </div>
@@ -53,9 +46,6 @@ function Account() {
                                             <h2 className="caption-blue m-t-50">(123) 456-7890</h2>
                                         </div>
                                     </div>
-                                    <div className="snapshot-action">
-                                        <EditIcon onClick={() => {}}/>
-                                    </div>
                                 </div>
                             </div>
                             <div className="table-row">  
@@ -65,9 +55,6 @@ function Account() {
                                             <h1 className="body-blue">First Name</h1>
                                             <h2 className="caption-blue m-t-50">Jane</h2>
                                         </div>
-                                    </div>
-                                    <div className="snapshot-action">
-                                        <EditIcon onClick={() => {}}/>
                                     </div>
                                 </div>
                             </div>
@@ -79,21 +66,18 @@ function Account() {
                                             <h2 className="caption-blue m-t-50">Doe</h2>
                                         </div>
                                     </div>
-                                    <div className="snapshot-action">
-                                        <EditIcon onClick={() => {}}/>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="table-container">  
+                    {/* <div className="table-container">  
                         <div className="table-header">
                             <p className=" table-title phrase-blue">Password</p>
                         </div>
                         <div className="table-content m-t-1">
                             <button className="btn-lg-red  m-h-auto">Reset Password</button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

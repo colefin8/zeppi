@@ -59,11 +59,8 @@ function ViewMessage() {
                             <div className="full-box">
                                 <div className="container__row justify-between">
                                     <div className="container__col-22 container__col-offset-1">
-                                        <input 
-                                        value={`From: ${sender}`}
-                                        type="number"
-                                        className="page-input"
-                                        ></input>
+                                        <p className="page-input">{`From: ${sender}`}</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -72,37 +69,14 @@ function ViewMessage() {
                     <div className="page-header">
                         <div className="container__row justify-between">
                             <div className="full-box">
-                                <div className="container__row justify-between">
-                                    <div className="container__col-22 container__col-offset-1">
-                                        <input 
-                                        value={`To: ${receiver}`}
-                                        type="number"
-                                        className="page-input"
-                                        ></input>
-                                    </div>
+                                <div className="text-container">
+                                    <p className="text-display">{message}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div className="page-header">
-                        <div className="container__row justify-between">
-                            <div className="full-box">
-                                <div className="container__row justify-between">
-                                    <div className="container__col-22 container__col-offset-1">
-                                        <textarea
-                                        type="text"
-                                        value={message}
-                                        className="page-input"
-                                        onChange={(e) => {}}></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="page-action"> 
-                        <button onClick={close}>CLOSE</button>
+                        <button className="btn-lg-yellow page-btn" onClick={close}>CLAIM</button>
                     </div>
 
                 </div>

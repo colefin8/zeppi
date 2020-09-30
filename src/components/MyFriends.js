@@ -62,7 +62,6 @@ function MyFriends() {
                             {friendList}
                         </div>
                         <div className="table-footer">
-                            <p className="caption-red">SHOW MORE</p>
                         </div>
                     </div>
                     <div className="table-container">  
@@ -73,7 +72,6 @@ function MyFriends() {
                             {requestList}
                         </div>
                         <div className="table-footer">
-                            <p className="caption-red">SHOW MORE</p>
                         </div>
                     </div>
                 </div>
