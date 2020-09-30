@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {usePosition} from './Location';
 import {getUser} from '../redux/authReducer';
 import axios from 'axios';
+import LoadingPopup from './LoadingPopup';
 
 function ViewMessage() {
 
@@ -46,8 +47,9 @@ function ViewMessage() {
 
     return (
         <div className="ViewMessage dashboard-page">
-            {console.log(match, latitude, lat, longitude, long)}
-            {console.log(sender_name)}
+            
+            
+            <LoadingPopup className={!match ? "" : "hidden"} isLoading={!match}/>
         {match === true ? (
             <div className="page-container">
                 <div className="page-title">
@@ -81,7 +83,7 @@ function ViewMessage() {
 
                 </div>
             </div>
-        ) : null}
+        ) : <LoadingPopup isLoading={match}/>}
         </div>
         
 
