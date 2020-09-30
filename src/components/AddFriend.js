@@ -30,7 +30,7 @@ function AddFriend() {
 
     const search = () => {
         const regex = new RegExp (`${nameSearch}`, 'gmi')
-        setResults(users.filter(item => item.username.match(regex)))
+        setResults(users.filter(item => item.user_name.match(regex)))
         setName('')
         setSearch(true)
     }
@@ -63,7 +63,7 @@ function AddFriend() {
                                         </div>
                                     </div>
                                     <div className="container__col-2">
-                                        <SearchIcon  width="1.3rem" height="1.3rem" className="inputIcon m-t-75" onClick={(e)=> {console.log(e, "line 52")}}/>
+                                        <SearchIcon  width="1.3rem" height="1.3rem" className="inputIcon m-t-75" onClick={search}/>
                                     </div>
                                 </div>
                             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 
 function DropSnapshot(props) {
-    const {receiver, lat, long, receiver_name} = props.drop
+    const {lat, long, receiver_name} = props.drop
     return (
         <div className="DropSnapshot snapshot">
             {console.log(receiver_name)}

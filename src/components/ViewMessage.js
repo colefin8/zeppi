@@ -16,7 +16,7 @@ function ViewMessage() {
     const {message_id, lat, long} = viewMessage
     const [match, setMatch] = useState(false)
     const [result, setResult] = useState({})
-    const {message, sender, receiver, sender_name} = result
+    const {message, sender_name} = result
     const {userId, totalLoot} = user
 
     useEffect(() => {
@@ -47,9 +47,7 @@ function ViewMessage() {
 
     return (
         <div className="ViewMessage dashboard-page">
-            
-            
-            <LoadingPopup className={!match ? "" : "hidden"} isLoading={!match}/>
+            {console.log(match, latitude, lat, longitude, long)}
         {match === true ? (
             <div className="page-container">
                 <div className="page-title">
@@ -61,7 +59,7 @@ function ViewMessage() {
                             <div className="full-box">
                                 <div className="container__row justify-between">
                                     <div className="container__col-22 container__col-offset-1">
-                                        <p className="page-input">{`From: ${sender}`}</p>
+                                        <p className="page-input">{`From: ${sender_name}`}</p>
                                         
                                     </div>
                                 </div>
