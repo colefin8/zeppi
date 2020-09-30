@@ -16,12 +16,13 @@ function MyLoot() {
 
     useEffect(() => {
         axios.get(`/msg/loot/${userId}`).then(res => {
-            console.log(res.data)
             dispatch(getLoot(res.data))
         }).catch(err => console.log(err))
 
         axios.get(`/msg/activeLoot/${userId}`).then(res => {
-            setActiveLoot(res.data)
+            console.log(res.data)
+            const {count} = res.data[0]
+            setActiveLoot(count)
         })
     }, [dispatch, userId])
 
@@ -34,6 +35,7 @@ function MyLoot() {
 
     return (
         <div className="MyLoot dashboard-page">
+            {console.log(activeLoot)}
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">My Loot</h1>

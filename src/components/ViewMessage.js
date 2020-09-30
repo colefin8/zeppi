@@ -15,7 +15,7 @@ function ViewMessage() {
     const {message_id, lat, long} = viewMessage
     const [match, setMatch] = useState(false)
     const [result, setResult] = useState({})
-    const {message, sender, receiver} = result
+    const {message, sender, receiver, sender_name} = result
     const {userId, totalLoot} = user
 
     useEffect(() => {
@@ -37,16 +37,17 @@ function ViewMessage() {
             axios.delete(`/msg/delete/${message_id}`).then(() => {
                 axios.get('/auth/user').then(res => {
                     dispatch(getUser(res.data))
+                    history.push('/loot')
                 }).catch(err => console.log(err))
             }).catch(err => console.log(err))
         }).catch(err => console.log(err))
-        history.push('/loot')
+        
     }
 
     return (
         <div className="ViewMessage dashboard-page">
             {console.log(match, latitude, lat, longitude, long)}
-            {console.log(result)}
+            {console.log(sender_name)}
         {match === true ? (
             <div className="page-container">
                 <div className="page-title">
