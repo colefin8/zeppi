@@ -5,34 +5,51 @@
     -o-transition: $args;
     transition: $args;
   }
+  .rotate {
+    animation: spin-animation ease-out 2s 1;
+  }
+  
+  @keyframes spin-animation {
+    100% {
+      transform: rotate(0deg);
+    }
+    0% {
+      transform: rotate(359deg);
+    }
+  }
   
 .red-primary{
     fill:#FF3C3C;
-    @include transition(fill .2s ease);
+    @include transition(fill 1s ease);
 }
 
 .red-secondary{
     fill:#D02727;
-    @include transition(fill .2s ease);
+    @include transition(fill 1s ease);
 }
 
 .red-dark{
     fill:#A32928;
-    @include transition(fill .2s ease);
+    @include transition(fill 1s ease);
 }
 
 
 .white-primary{
     fill:#FFFFFF;
-    @include transition(fill .2s ease);
 }
 
 .white-secondary{
     fill:#D5D5D9;
-    @include transition(fill .2s ease);
 }
 
 .white-dark{
     fill:#BDBDC7;
-    @include transition(fill .2s ease);
+}
+
+.LoadingPlanes {
+
+}
+
+.showAll {
+    overflow: visible;
 }

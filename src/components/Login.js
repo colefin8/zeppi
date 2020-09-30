@@ -16,21 +16,22 @@ function Login() {
     const [password, setPassword] = useState('')
 
     const handleLogin = () => {
-        axios.post('/auth/login', {email, password}).then(res => {
-            dispatch(loginUser(res.data))
-            history.push('/map')
-        }).catch(err => {
-            console.log(err)
-            alert('Could not log in.')
-        })
+        if(email !== '' && password !== '') {
+            axios.post('/auth/login', {email, password}).then(res => {
+                dispatch(loginUser(res.data))
+                history.push('/map')
+            }).catch(err => {
+                console.log(err)
+                alert('Could not log in.')
+            })
+        } else {
+            // Notifiy user ------ Email or password can not be left blank
+        }
     }
 
     return (
-        <div className="Login">
-                <div className="SignupRow">
-                    <div className="SignupButton">
-                    </div>
-                </div>
+        <div className="auth-page">
+            <div className="Login">
                 <div className="AuthForm">
                     <div className="container__row">
                         <div className="LoginForm">
@@ -64,12 +65,13 @@ function Login() {
                         </div>
                     </div>
                 </div>
-                <div className="GraphicRow">
-                    <div className="container__row size-h-3">
-                        <PaperPlanes className="paper-planes"/>
-                    </div>
-                    <CloudSpan className="CloudSpan"/>
+            </div>
+            <div className="GraphicRow">
+                <div className="container__row size-h-3">
+                    <PaperPlanes className="paper-planes"/>
                 </div>
+                <CloudSpan className="CloudSpan"/>
+            </div>
         </div>
     )
 }

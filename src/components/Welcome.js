@@ -1,20 +1,47 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styling/components/Welcome.scss';
 import {Link} from 'react-router-dom'
 import CloudSpan from '../assets/Clouds/CloudSpan/CloudSpan';
 import PaperPlanes from '../assets/Planes/PaperPlanes/PaperPlanes';
-import Zeppi from '../assets/ZeppiLogo/Zeppi/Zeppi';
+import PlaneWithTrail from '../assets/Planes/PlaneWIthTrail/PlaneWithTrail';
 import CaretDownIcon from '../assets/icons/systemIcons/CaretDownIcon';
 import CaretUpIcon from '../assets/icons/systemIcons/CaretUpIcon';
+import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
+import Zeppi from '../assets/ZeppiLogo/Zeppi/Zeppi';
+import LoadingPopup from './LoadingPopup';
+
+function useWidth() {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWidth(window.innerWidth);
+    }
+    
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+
+  return width;
+}
 
 function Welcome() {
     const [isOpen, setIsOpen] = useState(false);
+    const width = useWidth();
 
-    return (
+   return (
         <div className="Welcome">
+            <LoadingPopup/>
             <div className="cloud-container">
                 <div className="nav-bar">
-                    <Zeppi className="zeppi-text"/>
                     <div className={`header-buttons ${!isOpen ? 'hidden-md-down' : ''}`}>
                         <div className="container__row justify-end">
                             <Link to="/login" className="login-button">LOGIN</Link>
@@ -27,15 +54,14 @@ function Welcome() {
                 </div>
             </div>
             <div className="preview-container">
-                <div className="container__row TopPageDiv">
-                
+                <div className="container__row">
+                   {(width > 767) ? <Zeppi className="welcome-logo"/> : <ZeppiCloud className="welcome-logo"/>}
                 </div>
-                <div className="container__row size-h-3">
-                    <PaperPlanes className="paper-planes"/>
-                </div>
-                <CloudSpan className="CloudSpan"/>
-                <div className="RightBelowCloud p-v-2">
-                    <div className="container__row justify-center"><h1 className="headline">Features</h1></div>
+                <div className="GraphicRow">
+                    <div className="container__row ">
+                    {(width > 767) ? <PaperPlanes isLoading={false} className="paper-planes"/> : <PlaneWithTrail className="plane-trail"/>}
+                    </div>
+                    <CloudSpan className="CloudSpan"/>
                 </div>
             </div>
         </div>
