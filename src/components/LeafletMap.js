@@ -83,7 +83,7 @@ const LeafletMap = (props) => {
         }
     }
 
-    const handleClose = (e) => {
+    const handleClose = () => {
         setNewPendingMarker({})
         setIsAddEnabled(false)
     }

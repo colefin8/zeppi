@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import AddressBook from './AddressBook';
 import {getFriends} from '../redux/friendReducer';
-import {getUser} from '../redux/authReducer';
 import axios from 'axios';
 import CloseIcon from '../assets/icons/systemIcons/CloseIcon';
 
@@ -10,7 +9,7 @@ const NewMessageModal = (props) => {
 
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.authReducer)
-    const {userId, totalDrops}  = user
+    const {userId}  = user
     const {latitude, longitude} = props;
     const [receiver, setReceiver] = useState('')
     const [message, setMessage] = useState('')
@@ -24,13 +23,8 @@ const NewMessageModal = (props) => {
 
     const newMessage =  () => {
         const sender = userId
-        const newTotal = totalDrops + 1
         axios.post('/msg/newMsg', {message, sender, receiver, latitude, longitude}).then(() => {
-            axios.put('/msg/totalDrops', {userId, newTotal}).then(() => {
-                axios.get('/auth/user').then(res => {
-                    dispatch(getUser(res.data))
-                })
-            })    
+               
         }).catch(err => console.log(err))
         
     }
