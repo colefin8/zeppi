@@ -1309,7 +1309,7 @@ body {
 }
 
 .LoadingPopup {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.55);
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -1319,17 +1319,18 @@ body {
   justify-content: center;
   align-content: center;
   margin: 0 auto;
+  @include transition (all 2s);
 }
 
 .popup-container {
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
 }
 
-.spin-container {
-  width: 10rem;
-  height: 10rem;
-  @extend .rotate;
-  display: flex;
-}
+// .spin-container {
+//   width: 20rem;
+//   height: 20rem;
+//   @extend .rotate;
+//   display: flex;
+// }

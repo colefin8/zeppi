@@ -8,7 +8,6 @@ import CaretDownIcon from '../assets/icons/systemIcons/CaretDownIcon';
 import CaretUpIcon from '../assets/icons/systemIcons/CaretUpIcon';
 import ZeppiCloud from '../assets/ZeppiLogo/ZeppiCloud/ZeppiCloud';
 import Zeppi from '../assets/ZeppiLogo/Zeppi/Zeppi';
-import LoadingPopup from './LoadingPopup';
 
 function useWidth() {
   const [width, setWidth] = useState(0);
@@ -39,7 +38,6 @@ function Welcome() {
 
    return (
         <div className="Welcome">
-            {/* <LoadingPopup/> */}
             <div className="cloud-container">
                 <div className="nav-bar">
                     <div className={`header-buttons ${!isOpen ? 'hidden-md-down' : ''}`}>

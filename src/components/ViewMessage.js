@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {usePosition} from './Location';
 import {getUser} from '../redux/authReducer';
 import axios from 'axios';
+import LoadingPopup from './LoadingPopup';
 
 function ViewMessage() {
 
@@ -80,7 +81,7 @@ function ViewMessage() {
 
                 </div>
             </div>
-        ) : null}
+        ) : <LoadingPopup isLoading={match}/>}
         </div>
         
 
