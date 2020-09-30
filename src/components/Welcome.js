@@ -39,7 +39,7 @@ function Welcome() {
 
    return (
         <div className="Welcome">
-            <LoadingPopup/>
+            {/* <LoadingPopup/> */}
             <div className="cloud-container">
                 <div className="nav-bar">
                     <div className={`header-buttons ${!isOpen ? 'hidden-md-down' : ''}`}>

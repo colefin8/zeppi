@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Snapshot from './Snapshot';
@@ -12,18 +12,12 @@ function MyLoot() {
     const {user} = useSelector((state) => state.authReducer)
     const {loot} = useSelector((state) => state.msgReducer)
     const {userId, totalLoot} = user
-    const [activeLoot, setActiveLoot] = useState(0)
 
     useEffect(() => {
         axios.get(`/msg/loot/${userId}`).then(res => {
             dispatch(getLoot(res.data))
         }).catch(err => console.log(err))
 
-        axios.get(`/msg/activeLoot/${userId}`).then(res => {
-            console.log(res.data)
-            const {count} = res.data[0]
-            setActiveLoot(count)
-        })
     }, [dispatch, userId])
 
     const view = (lootId) => {
@@ -35,7 +29,6 @@ function MyLoot() {
 
     return (
         <div className="MyLoot dashboard-page">
-            {console.log(activeLoot)}
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">My Loot</h1>
