@@ -1,7 +1,12 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 
 function Account() {
+
+    const {user} = useSelector((state) => state.authReducer)
+    const {userId, username, firstName, lastName, phone, email} = user
+
     return (
         <div className="Account dashboard-page">
             <div className="page-container">
@@ -23,7 +28,7 @@ function Account() {
                                         </div>
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Username</h1>
-                                            <h2 className="caption-blue m-t-50">@exampleUsername</h2>
+                                            <h2 className="caption-blue m-t-50">@{username}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -33,7 +38,7 @@ function Account() {
                                     <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Email</h1>
-                                            <h2 className="caption-blue m-t-50">example@email.com</h2>
+                                            <h2 className="caption-blue m-t-50">{email}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -43,7 +48,7 @@ function Account() {
                                     <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Phone</h1>
-                                            <h2 className="caption-blue m-t-50">(123) 456-7890</h2>
+                                            <h2 className="caption-blue m-t-50">{phone}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -53,7 +58,7 @@ function Account() {
                                     <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">First Name</h1>
-                                            <h2 className="caption-blue m-t-50">Jane</h2>
+                                            <h2 className="caption-blue m-t-50">{firstName}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +68,7 @@ function Account() {
                                     <div className="snapshot-content m-l-3">
                                         <div className="snapshot-info">
                                             <h1 className="body-blue">Last Name</h1>
-                                            <h2 className="caption-blue m-t-50">Doe</h2>
+                                            <h2 className="caption-blue m-t-50">{lastName}</h2>
                                         </div>
                                     </div>
                                 </div>
