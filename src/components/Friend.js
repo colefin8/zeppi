@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux'
-import ExpandAltIcon from '../assets/icons/systemIcons/ExpandAltIcon';
 import UserIcon from '../assets/icons/systemIcons/AccountIcon';
 
 function Friend(props) {
@@ -32,7 +31,7 @@ function Friend(props) {
                 </div>
             </div>
             <div className="snapshot-action">
-                <ExpandAltIcon onClick={() => {}}/>
+                {/* <ExpandAltIcon onClick={() => {}}/> */}
             </div>
         </div>
     )

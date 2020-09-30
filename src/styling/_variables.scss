@@ -17,6 +17,7 @@ $sub-title: 1rem;
 $phrase: .90rem;
 $body: .85rem;
 $caption: .7rem;
+$inlineCaption: .6rem;
 $highlight: 4rem;
 
 
@@ -27,16 +28,18 @@ $blue-primary: #56A6EB;
 $blue-secondary: #64BAF8;
 
 $red-primary: #FF3C3C;
-$red-second: #D02727;
+$red-secondary: #D02727;
 $red-dark: #A32928;
 
 $white-primary: #FFFFFF;
-$white-secondary: #f2f2f2;
+$white-secondary: #F2F2F2;
+$white-medium: #D5D5D9;
+$white-dark: #BDBDC7;
 
 // APP COLORS
 $blue-gradient-bg: radial-gradient( #8FCFFF 40%, #6CBDFC 100%);
 $font-color:#9BA1A3;
-$success-color: #7ebc59;
+$success-color: #5ac71a;
 $warning-color: #ffd900;
 $error-color: #b94040;
 

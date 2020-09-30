@@ -54,7 +54,6 @@ function MyDrops() {
                             {drops.map((item, index) => <div className="table-row"><DropSnapshot key={index} drop={item}/></div>)}
                         </div>
                         <div className="table-footer">
-                            <p className="caption-red">SHOW MORE</p>
                         </div>
                     </div>
                 </div>

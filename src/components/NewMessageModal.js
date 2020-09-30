@@ -1,25 +1,44 @@
-import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
-import {usePosition} from './Location';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import AddressBook from './AddressBook';
+import {getFriends} from '../redux/friendReducer';
+import {getUser} from '../redux/authReducer';
 import axios from 'axios';
 import CloseIcon from '../assets/icons/systemIcons/CloseIcon';
+
 const NewMessageModal = (props) => {
 
-    const history = useHistory()
+    const dispatch = useDispatch()
     const {user} = useSelector((state) => state.authReducer)
-    const {latitude, longitude} = usePosition();
-    const [receiver, setReceiver] = useState(0)
+    const {userId, totalDrops}  = user
+    const {latitude, longitude} = props;
+    const [receiver, setReceiver] = useState('')
     const [message, setMessage] = useState('')
+    const {friends} = useSelector((state) => state.friendReducer)
+
+    useEffect(() => {
+        axios.get(`/friends/all/${userId}`).then(res => {
+            dispatch(getFriends(res.data))
+        })
+    }, [dispatch, userId])
 
     const newMessage =  () => {
-       
-    
+        const sender = userId
+        const newTotal = totalDrops + 1
+        axios.post('/msg/newMsg', {message, sender, receiver, latitude, longitude}).then(() => {
+            axios.put('/msg/totalDrops', {userId, newTotal}).then(() => {
+                axios.get('/auth/user').then(res => {
+                    dispatch(getUser(res.data))
+                })
+            })    
+        }).catch(err => console.log(err))
+        
     }
+
+    const addressBook = friends.map((friend, index) => <AddressBook key={index} friend={friend}/>)
 
     return (
         <div className="NewMessageModal modal-overlay">
-            {console.log(user)}
             <div className="modal-container">
                 <div className="flex justify-end">
                     <CloseIcon className='color-red m-t-1 m-r-1' onClick={e => props.handleClose(e)}/>
@@ -32,11 +51,13 @@ const NewMessageModal = (props) => {
                         <div className="container__row justify-between">
                             <div className="full-box">
                                 <div className="container__row justify-between">
-                                        <input 
-                                        placeholder="Recipient"
-                                        type="number"
-                                        className="input container__col-22 container__col-offset-1"
-                                        onChange={(e) => setReceiver(e.target.value)}></input>
+                                    <select 
+                                    value={receiver}
+                                    className="input container__col-22 container__col-offset-1"
+                                    onChange={(e) => setReceiver(e.target.value)}>
+                                        <option disabled value=''>Recipient</option>
+                                        {addressBook}
+                                    </select>
                                 </div>
                             </div>
                         </div>
