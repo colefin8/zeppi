@@ -985,6 +985,31 @@ body {
   }
 }
 
+.FallbackRow {
+  @extend .flex;
+  width: 100%;
+  @extend .justify-center;
+  @extend .m-t-1;
+  .snapshot-content{
+    @extend .flex-column;
+    align-content: center;
+
+    .snapshot-icon {
+      @extend .flex-column;
+      @extend .justify-center;
+      width: 2rem;
+      height: 2rem;
+      background-color: lighten($font-color, 15%);
+      border-radius: 3rem;
+      color: $white-primary;
+      margin: 0 auto;
+    }
+    .snapshot-info {
+      @extend .flex;
+    }
+  }  
+}
+
 
 // AUTH STYLING
 .auth-page {

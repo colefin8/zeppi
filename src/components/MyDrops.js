@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getDrops} from '../redux/messageReducer';
 import axios from 'axios';
 import AddMessageButton from './AddMessageButton';
+import FallbackRow from './FallbackRow';
 
 function MyDrops() {
 
@@ -50,7 +51,7 @@ function MyDrops() {
                             <p className=" table-title phrase-blue">Active Drops</p>
                         </div>
                         <div className="table-content">
-                            {drops.map((item, index) => <div className="table-row"><DropSnapshot key={index} drop={item}/></div>)}
+                            {drops.length > 1 ? drops.map((item, index) => <div className="table-row"><DropSnapshot key={index} drop={item}/></div>) : <FallbackRow message="You currently have no active drops!"/>}
                         </div>
                         <div className="table-footer">
                         </div>

@@ -17,11 +17,11 @@ const AuthRoute = (props) => {
             }).catch(err => console.log(err))
           }, [dispatch, isAuthenticated])
           
-    if(isAuthenticated) {
+    // if(isAuthenticated) {
         return (<Route {...rest} render={(props) => (<Component {...props} />)}/>);
-    } else {
-        return (<Redirect push to={'/login'} />);
-    }
+    // } else {
+    //     return (<Redirect push to={'/login'} />);
+    // }
 }
 
 export default AuthRoute;

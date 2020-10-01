@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import Snapshot from './Snapshot';
 import {getLoot, getMessage} from '../redux/messageReducer';
 import axios from 'axios';
+import FallbackRow from './FallbackRow';
 
 function MyLoot() {
     
@@ -57,7 +58,7 @@ function MyLoot() {
                             <p className=" table-title phrase-blue">Pending Loot</p>
                         </div>
                         <div className="table-content">
-                            {loot.map(item =><div className="table-row"><Snapshot key={item.message_id} loot={item} view={view}/></div>)}
+                            {loot > 1 ? loot.map(item =><div className="table-row"><Snapshot key={item.message_id} loot={item} view={view}/></div>) : <FallbackRow message="No pending loot at the moment."/>}
                         </div>
                         <div className="table-footer">
                         </div>

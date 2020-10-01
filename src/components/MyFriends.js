@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getFriends, getRequests} from '../redux/friendReducer';
 import axios from 'axios';
 import AddFriendButton from './AddFriendButton';
+import FallbackRow from './FallbackRow';
 
 function MyFriends() {
 
@@ -59,7 +60,7 @@ function MyFriends() {
                             <p className=" table-title phrase-blue">Friends</p>
                         </div>
                         <div className="table-content">
-                            {friendList}
+                        {friendList.length > 0 ? friendList : <FallbackRow message="No friends to display currently"/>}
                         </div>
                         <div className="table-footer">
                         </div>
@@ -68,8 +69,8 @@ function MyFriends() {
                         <div className="table-header">
                             <p className=" table-title phrase-blue">Requests</p>
                         </div>
-                        <div className="table-content m-t-1">
-                            {requestList}
+                        <div className="table-content ">
+                            {requestList.length > 0 ? requestList : <FallbackRow message="No pending friend request right now."/>}
                         </div>
                         <div className="table-footer">
                         </div>
