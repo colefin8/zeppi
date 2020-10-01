@@ -16,7 +16,7 @@ function Account() {
                 <div className="page-content">
                     <div className="table-container">  
                         <div className="table-header">
-                            <p className=" table-title phrase-blue">Edit Info</p>
+                            <p className=" table-title phrase-blue">Account Info</p>
                         </div>
                         <div className="table-content">
                             <div className="table-row">  

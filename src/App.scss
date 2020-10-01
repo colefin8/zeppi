@@ -549,6 +549,9 @@
   &-red {
     color: $red-primary;
   }
+  &-dark-red {
+    color: $red-secondary;
+  }
   &-gray {
     color: $font-color;
   }
@@ -958,6 +961,7 @@ body {
 }
 
 .snapshot {
+  width: 100%;
   @extend .flex;
   @extend .justify-between;
   @extend .m-v-50;
@@ -981,7 +985,18 @@ body {
     @extend .flex-column;
     @extend .justify-center;
     @extend .m-r-1;
-    color: $warning-color;
+    color: $red-primary;
+  }
+
+  .snapshot-actions {
+    @extend .flex;
+    @extend .justify-between;  
+    .snapshot-action {
+      @extend .flex-column;
+      @extend .justify-center;
+      @extend .m-r-1;
+      color: $success-color;
+    }
   }
 }
 

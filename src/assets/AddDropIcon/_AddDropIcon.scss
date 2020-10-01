@@ -25,26 +25,8 @@
     }
 }
 
-#mainIconGroup {
-overflow: visible;
-}
 
-#planeIconGroup {
-    &:hover {
-        @if(currentColor != $red-primary) {
-            animation: bobble 2s linear 0s infinite normal none running;
-        } @else {
-            animation-name: twitch;
-            animation-duration: 2s;
-            // animation-delay: unset;
-            // animation-iteration-count: 1;
-            // animation-direction: unset;
-            // animation-timing-function: unset;
-            // animation-fill-mode: unset;
 
-        }
-    }
-}
 .addDrop0{
     fill:currentColor;
 }
