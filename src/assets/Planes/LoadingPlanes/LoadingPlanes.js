@@ -9,7 +9,7 @@ function LoadingPlanes(props) {
     
     React.useEffect(() => {
       let interval = null;
-    if (isLoading && currentPlane < 6) {
+    if (isLoading && currentPlane < 5) {
       interval = setInterval(() => {
         setCurrentPlane(currentPlane => currentPlane + 1);
       }, 800);
@@ -36,10 +36,10 @@ function LoadingPlanes(props) {
         <g className={isLoading === true ? "showAll" : ""}>
             {/* Main Red Large Front Plane */}
             <g className={currentPlane ? "showAll" : ""}>
-                <path id="plane1" className={currentPlane === 1 ? "red-secondary" : "white-secondary"} d="M210.1,80.5c0,0-10.8,39.7-8.9,53.4L399.9,0L392,2.8L210.1,80.5z"/>
-                <polygon id="plane1" className={currentPlane === 1 ? "red-primary" : "white-primary"} points="161.2,50.5 399.9,0 210.3,83.7 		"/>
-                <path id="plane1" className={currentPlane === 1 ? "red-dark" : "white-dark"} d="M231.1,98.6c-3,8.5-29.9,35.4-29.9,35.4l54.4-26.4C255.6,107.6,237,95.8,231.1,98.6z"/>
-                <polygon id="plane1" className={currentPlane === 1 ? "red-primary" : "white-primary"} points="231.1,98.6 399.9,0 286.1,138.7 		"/>
+                <path id="plane1" className={currentPlane === 1 ? "red-secondary" : "red-secondary"} d="M210.1,80.5c0,0-10.8,39.7-8.9,53.4L399.9,0L392,2.8L210.1,80.5z"/>
+                <polygon id="plane1" className={currentPlane === 1 ? "red-primary" : "red-primary"} points="161.2,50.5 399.9,0 210.3,83.7 		"/>
+                <path id="plane1" className={currentPlane === 1 ? "red-dark" : "red-dark"} d="M231.1,98.6c-3,8.5-29.9,35.4-29.9,35.4l54.4-26.4C255.6,107.6,237,95.8,231.1,98.6z"/>
+                <polygon id="plane1" className={currentPlane === 1 ? "red-primary" : "red-primary"} points="231.1,98.6 399.9,0 286.1,138.7 		"/>
             </g>
             {/* Front Right White Plane */}
             {/* Middle Left White Plane */}

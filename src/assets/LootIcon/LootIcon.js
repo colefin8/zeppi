@@ -30,11 +30,11 @@ function LootIcon(props) {
 			</defs>
 			<g>
 				<g>
-					<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="15.066" y1="6.9356" x2="15.0694" y2="37.0695">
-						<stop  offset="7.738900e-03" style={{stopColor:"#E53C20"}}/>
-						<stop  offset="0.3989" style={{stopColor:"#C82B11"}}/>
-						<stop  offset="0.752" style={{stopColor:"#B62007"}}/>
-						<stop  offset="1" style={{stopColor:"#AF1C04"}}/>
+					<linearGradient id="lootIcon1" gradientUnits="userSpaceOnUse" x1="15.066" y1="6.9356" x2="15.0694" y2="37.0695">
+						<stop  offset="7.738900e-03" style={{stopColor:"#FFD700"}}/>
+						<stop  offset="0.3989" style={{stopColor:"#E5C100"}}/>
+						<stop  offset="0.752" style={{stopColor:"#D3B200"}}/>
+						<stop  offset="1" style={{stopColor:"#CCAC00"}}/>
 					</linearGradient>
 					<path className="lootIcon0" d="M15.1,0C6.7,0,0,6.9,0,15.4C0,23,12.1,36.6,14.6,39.3c-0.1,0.1-0.2,0.3-0.2,0.5c0,0.4,0.3,0.7,0.7,0.7
 						c0.4,0,0.7-0.3,0.7-0.7c0-0.2-0.1-0.4-0.2-0.5C18,36.5,30.1,23,30.1,15.4C30.1,6.9,23.4,0,15.1,0z"/>
@@ -42,7 +42,7 @@ function LootIcon(props) {
 				<g>
 					<polygon className="lootIcon1" points="15.2,32.5 18.3,31.7 18.3,28.3 15.2,28 		"/>
 					<polygon className="lootIcon2" points="11.9,31.7 14.9,32.5 14.9,28 11.9,28.3 		"/>
-					<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="7.4587" y1="17.8731" x2="22.6752" y2="17.8731">
+					<linearGradient id="lootIcon2" gradientUnits="userSpaceOnUse" x1="7.4587" y1="17.8731" x2="22.6752" y2="17.8731">
 						<stop  offset="0" style={{stopColor:"#F0F0F5"}}/>
 						<stop  offset="1" style={{stopColor:"#FFFFFF"}}/>
 					</linearGradient>
@@ -59,4 +59,3 @@ function LootIcon(props) {
 }
 
 export default LootIcon;
-

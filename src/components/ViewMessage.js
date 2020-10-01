@@ -81,7 +81,7 @@ function ViewMessage() {
 
                 </div>
             </div>
-        ) : <LoadingPopup isLoading={match}/>}
+        ) : <LoadingPopup messageFound={true} isLoading={!match}/>}
         </div>
         
 

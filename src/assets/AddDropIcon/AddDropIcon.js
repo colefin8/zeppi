@@ -1,5 +1,4 @@
 import * as React from "react";
-import './AddDropIcon.scss';
 
 function AddDropIcon(props) {
   	return (
@@ -16,11 +15,11 @@ function AddDropIcon(props) {
             <style/>
             <defs>
             </defs>
-            <g id="Group_17934_1_" transform="translate(-289 -722)">
+            <g id="mainIconGroup" transform="translate(-289 -722)">
                 <g id="Group_17936_1_" transform="translate(-118.939 -256.939)">
                     <circle id="Ellipse_613_1_" className="addDrop0" cx="422.4" cy="993.4" r="14.5"/>
                 </g>
-                <g id="Group_17655_2_" transform="translate(295.438 737.881)">
+                <g id="planeIconGroup" transform="translate(295.438 737.881)">
                     <path id="Path_7648_2_" className="addDrop1" d="M2.3-0.1c0,0-0.8,3.4-0.6,4.5L18-7.5l-0.7,0.3L2.3-0.1z"/>
                     
                         <linearGradient id="Path_7649_3_" gradientUnits="userSpaceOnUse" x1="-1476.447" y1="611.1288" x2="-1476.0409" y2="611.1288" gradientTransform="matrix(48.684 0 0 -18.594 71878.8438 11359.6562)">

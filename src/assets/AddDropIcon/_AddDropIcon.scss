@@ -1,0 +1,74 @@
+@import '../../styling/variables';
+
+
+@keyframes bobble {
+    0% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(40px);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes twitch {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+#mainIconGroup {
+overflow: visible;
+}
+
+#planeIconGroup {
+    &:hover {
+        @if(currentColor != $red-primary) {
+            animation: bobble 2s linear 0s infinite normal none running;
+        } @else {
+            animation-name: twitch;
+            animation-duration: 2s;
+            // animation-delay: unset;
+            // animation-iteration-count: 1;
+            // animation-direction: unset;
+            // animation-timing-function: unset;
+            // animation-fill-mode: unset;
+
+        }
+    }
+}
+.addDrop0{
+    fill:currentColor;
+}
+.addDrop1{
+    fill:#D5D5D9;
+}
+.addDrop2{
+    fill:url(#Path_7649_3_);
+}
+.addDrop3{
+    fill:#BDBDC7;
+}
+.addDrop4{
+    fill:url(#Path_7651_3_);
+}
+.addDrop5{
+    fill:#F2F2F2;
+    stroke:currentColor;
+    stroke-width:0.25;
+    stroke-miterlimit:10;
+}
+.addDrop6{
+    fill:url(#Path_7649_4_);
+}
+.addDrop7{
+    fill:url(#Path_7651_4_);
+}

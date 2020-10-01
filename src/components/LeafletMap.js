@@ -11,11 +11,13 @@ import CurrentLocation from '../assets/CurrentLocation/CurrentLocation';
 import UserIcon from '../assets/UserIcon/UserIcon';
 import NewMessageModal from "./NewMessageModal";
 import {getDrops} from '../redux/messageReducer';
-import {getLoot} from '../redux/messageReducer';
+import {getLoot, getMessage} from '../redux/messageReducer';
 import axios from 'axios';
-
+import ExpandAltIcon from '../assets/icons/systemIcons/ExpandAltIcon';
+import {useHistory} from 'react-router-dom';
 
 const LeafletMap = () => {
+    const history = useHistory()
     const mapRef = useRef(null);
     const [userLocation, setUserLocation] = useState({});
     const [isAddEnabled, setIsAddEnabled] = useState(false);
@@ -36,7 +38,13 @@ const LeafletMap = () => {
         }).catch(err => console.log(err))
     }, [dispatch, userId])
     // drops, icon, looticon, dropicon all used for rendering the users current drops and loot items on the map
-
+    
+    const view = (lootId) => {
+        axios.get(`/msg/view/${lootId}`).then(res => {
+            dispatch(getMessage(res.data))
+            history.push(`/viewMessage/${lootId}`)
+        }).catch(err => console.log(err))
+    }
 
     const lootIcon = L.divIcon({
         className: 'custom-icon',
@@ -91,6 +99,7 @@ const LeafletMap = () => {
         setLongitude();
         setIsAddEnabled(false)
     }
+
     return (  
         <div className="LeafletMap">
             
@@ -120,20 +129,6 @@ const LeafletMap = () => {
                     <AddDropIcon className={isAddEnabled ? "color-red" : "color-gray"} onClick={e => setIsAddEnabled(!isAddEnabled)} />       
                 </Control>
                 {/* Map lists for each drop and list for the current user */}
-                {loot.map((lootMessage, index) => (
-                    <Marker
-                    key={index}
-                    icon={lootIcon}
-                    position={[
-                        lootMessage.lat,
-                        lootMessage.long
-                    ]}>
-                        <Popup key={lootMessage.id}>
-                            Loot!<br/>
-                            From: {lootMessage.sender_name}
-                        </Popup>
-                    </Marker>
-                ))}
                 {drops.map((dropMessage, index) => (
                     <Marker
                     key={index}
@@ -148,8 +143,25 @@ const LeafletMap = () => {
                         </Popup>
                     </Marker>
                 ))}
+                {loot.map((lootMessage, index) => (
+                    <Marker
+                    key={index}
+                    icon={lootIcon}
+                    style={{zindex: "7005"}}
+                    position={[
+                        lootMessage.lat,
+                        lootMessage.long
+                    ]}>
+                        <Popup key={lootMessage.id}>
+                            Loot!<br/>
+                            From: {lootMessage.sender_name} <br/>
+                            <div className='flex justify-center m-t-50'><ExpandAltIcon color="#ffd900" onClick={e => view(lootMessage.message_id)}/></div>
+                        </Popup>
+                    </Marker>
+                ))}
+
                 {/* This section shows the user location when the current location control button is pressed */}
-                {userLocation.hasLocation === true ? <Marker icon={userIcon} position={[userLocation.latlng.lat, userLocation.latlng.lng]}><Circle radius={40} center={[userLocation.latlng.lat, userLocation.latlng.lng]}></Circle></Marker> : ()=> {}}
+                {userLocation.hasLocation === true ? <Marker icon={userIcon} position={[userLocation.latlng.lat, userLocation.latlng.lng]}><Circle radius={40} center={[userLocation.latlng.lat, userLocation.latlng.lng]}></Circle></Marker> : null}
             </Map>
         </div>
     );
