@@ -86,16 +86,18 @@ function ViewMessage() {
                     </div>
 
                 </div>
+
             </div> )
             : failed === true ? (
             <div>
-                <h2>You location didn't match. Check your position and try again!</h2>
+                <h2>Your location didn't match. Check your position and try again!</h2>
                 <br/>
                 <button onClick={back}>BACK</button>
             </div> )
             :
-            <LoadingPopup isLoading={match}/> 
+            <LoadingPopup messageFound={true} isLoading={!match}/> 
             }
+
         </div>
         
 
