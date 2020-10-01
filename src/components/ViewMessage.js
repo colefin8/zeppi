@@ -5,6 +5,7 @@ import {usePosition} from './Location';
 import {getUser} from '../redux/authReducer';
 import axios from 'axios';
 import LoadingPopup from './LoadingPopup';
+import FallbackRow from './FallbackRow';
 
 function ViewMessage() {
 
@@ -89,13 +90,27 @@ function ViewMessage() {
 
             </div> )
             : failed === true ? (
-            <div>
-                <div>
-                    <h2>Your location didn't match. Check your position and try again!</h2>
-                    <br/>
-                    <button onClick={back}>BACK</button>
+                <div className="page-container">
+                    <div className="page-title">
+                        <h1 className="title-white">Oops...</h1>
+                    </div>
+                    <div className="page-content">
+                        <div className="table-container">  
+                            <div className="table-header">
+                            </div>
+                            <div className="table-content ">
+                                <FallbackRow message="Looks like you're lost... Check your position and try again!"/>
+                            </div>
+                            <div className="table-footer">
+                            </div>
+                        </div>
+                        <div className="page-action"> 
+                        <button className="btn-lg-yellow page-btn" onClick={back}>BACK</button>
+                        </div>
+
+                    </div>
                 </div>
-            </div> )
+            )
             :
             <LoadingPopup messageFound={true} isLoading={!match}/> 
             }

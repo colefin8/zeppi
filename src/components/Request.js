@@ -23,9 +23,13 @@ function Request(props) {
                     <h1 className="body-blue">{user_name}</h1>
                 </div>
             </div>
-            <div className="snapshot-action">
-                <CheckCircleIcon onClick={() => accept(id, userId)}/>
-                <CloseCircleIcon onClick={() => deny(id, userId)}/>
+            <div className="snapshot-actions">
+                <div className="snapshot-action">
+                    <CheckCircleIcon className="m-h-auto" height="2rem" width="2rem" onClick={() => accept(id, userId)}/>
+                </div>
+                <div className="snapshot-action">
+                    <CloseCircleIcon className="m-h-auto" height="2rem" width="2rem" fill="#FF3C3C" onClick={() => deny(id, userId)}/>
+                </div>
             </div>
         </div>
     )

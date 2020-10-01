@@ -129,7 +129,7 @@ const LeafletMap = () => {
                 </Control>
                 {/* Drag and Drop Drop icon allowing the user to add a new drop from the map functions much like google street view */}
                 <Control position="topright" draggable={true} onDragOver={e => console.log("onDragOver", e)} onDragStart={e => console.log("onDragStart", e)}  onDragEnd={e => console.log("onDragEnd", e)}>
-                    <AddDropIcon className={isAddEnabled ? "color-red" : "color-gray"} onClick={e => setIsAddEnabled(!isAddEnabled)} />       
+                    <AddDropIcon className={isAddEnabled ? "color-red" : "color-dark-red"} onClick={e => setIsAddEnabled(!isAddEnabled)} />       
                 </Control>
                 {/* Map lists for each drop and list for the current user */}
                 {drops.map((dropMessage, index) => (
