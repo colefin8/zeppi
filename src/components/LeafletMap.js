@@ -87,6 +87,9 @@ const LeafletMap = () => {
     }
 
     const handleClose = () => {
+        axios.get(`/msg/drops/${userId}`).then(res => {
+            dispatch(getDrops(res.data))
+        }).catch(err => console.log(err))
         setLatitude();
         setLongitude();
         setIsAddEnabled(false)

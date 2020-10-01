@@ -59,7 +59,7 @@ function Login() {
                                     <button className="AuthSubmit" onClick={handleLogin}>LOGIN</button>
                                 </div>
                                 <Link to="/signup" className="container__row justify-center textDecor">
-                                    <h2 className="auth-form-link m-b-1">Dont have an account?</h2>
+                                    <h2 className="auth-form-link m-b-1">Don't have an account?</h2>
                                 </Link>
                             </div>
                         </div>
