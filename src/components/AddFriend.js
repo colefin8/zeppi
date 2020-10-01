@@ -25,6 +25,7 @@ function AddFriend() {
     const addFriend = (userOne, userTwo) => {
         axios.post(`/friends/newFriend`, {userOne, userTwo}).then(res => {
             dispatch(getUsers(res.data))
+            setSearch(false)
         }).catch(err => console.log(err))
     }
 
@@ -35,9 +36,9 @@ function AddFriend() {
         setSearch(true)
     }
 
-    const resultList = results.map((user, index) => <div className="table-row"> <User key={index} user={user} addFriend={addFriend}/></div>)
+    const resultList = results.map((person, index) => <div className="table-row"> <User key={index} person={person} addFriend={addFriend}/></div>)
 
-    const userList = users.map((user, index) => <div className="table-row"> <User key={index} user={user} addFriend={addFriend}/></div>)
+    const userList = users.map((person, index) => <div className="table-row"> <User key={index} person={person} addFriend={addFriend}/></div>)
 
     return (
         <div className="AddFriend dashboard-page">
@@ -55,7 +56,7 @@ function AddFriend() {
                                         <div className="container__row justify-between">
                                             <input 
                                             value={nameSearch}
-                                            placeholder="Search Users..."
+                                            placeholder="Search Users by Username..."
                                             type="text"
                                             onChange={(e) => setName(e.target.value)}
                                             className="page-input"

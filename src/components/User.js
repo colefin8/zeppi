@@ -5,7 +5,7 @@ import PlusIcon from '../assets/icons/systemIcons/PlusIcon';
 
 function User(props) {
 
-    const {user_name, first_name, last_name, user_id} = props.user
+    const {user_name, first_name, last_name, user_id} = props.person
     const {user} = useSelector((state) => state.authReducer)
     const {userId} = user
     const {addFriend} = props
