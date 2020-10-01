@@ -3,25 +3,33 @@ import './CurrentLocation.scss';
 
 function CurrentLocation(props) {
   return (
-    <div className="currentLocationContainer"
+    <svg 
+    width="2.25rem"
+    height="2.25rem" 
+    viewBox="0 0 30 30" 
+    className="CurrentLocation"
     {...props}
     >
-        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-        <svg
-        viewBox="0 0 1024 1024"
-        fill="#000000"
-        height="1.25rem"
-        width="1.25rem"
-        {...props}
-        >
-        <defs>
-            <style />
-        </defs>
-        <path d="M952 474H829.8C812.5 327.6 696.4 211.5 550 194.2V72c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v122.2C327.6 211.5 211.5 327.6 194.2 474H72c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h122.2C211.5 696.4 327.6 812.5 474 829.8V952c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V829.8C696.4 812.5 812.5 696.4 829.8 550H952c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8zM512 756c-134.8 0-244-109.2-244-244s109.2-244 244-244 244 109.2 244 244-109.2 244-244 244z" />
-        <path d="M512 392c-32.1 0-62.1 12.4-84.8 35.2-22.7 22.7-35.2 52.7-35.2 84.8s12.5 62.1 35.2 84.8C449.9 619.4 480 632 512 632s62.1-12.5 84.8-35.2C619.4 574.1 632 544 632 512s-12.5-62.1-35.2-84.8C574.1 404.4 544.1 392 512 392z" />
-        </svg>
-        </div>
-    </div>
+      <style/>
+      <defs>
+      </defs>
+      <g>
+        <g id="Group_17934_1_">
+          <g id="Group_17936_2_" transform="translate(-118.939 -256.939)">
+            <circle id="Ellipse_613_2_" className="st0" cx="133.9" cy="271.9" r="15"/>
+          </g>
+        </g>
+        <linearGradient id="userIcon_3_" gradientUnits="userSpaceOnUse" x1="8.6453" y1="13.8302" x2="21.3523" y2="13.8302">
+          <stop  offset="0" style={{stopColor:"#F0F0F5"}}/>
+          <stop  offset="1" style={{stopColor:"#FFFFFF"}}/>
+        </linearGradient>
+        <path id="userIcon_2_" className="st1" d="M15,7.5c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2s3.2-1.4,3.2-3.2
+          C18.2,8.9,16.8,7.5,15,7.5z M15,14.6c-2.1,0-6.4,1.1-6.4,3.2v2.4h12.7v-2.4C21.4,15.7,17.1,14.6,15,14.6z"/>
+        <path id="Path_1644_1_" className="st2" d="M19.1,15.1c-1.5,0-2.7,1.2-2.7,2.7c0,1.4,2.2,4.3,2.4,4.6c0.1,0.1,0.3,0.2,0.5,0.1
+          c0,0,0,0,0.1-0.1c0.2-0.3,2.4-3.2,2.4-4.6C21.8,16.3,20.6,15.1,19.1,15.1z M19.1,19.2c-0.7,0-1.4-0.6-1.4-1.4
+          c0-0.7,0.6-1.4,1.4-1.4s1.4,0.6,1.4,1.4C20.4,18.5,19.8,19.2,19.1,19.2z"/>
+      </g>
+    </svg>
   );
 }
 

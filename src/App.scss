@@ -546,6 +546,9 @@
   &-blue {
     color: $blue-primary;
   }
+  &-dark-blue {
+    color: $blue-dark;
+  }
   &-red {
     color: $red-primary;
   }
@@ -869,6 +872,7 @@ body {
   width: 100%;
   @extend .m-t-2;
   background-color: $white-primary;
+  border-radius: 1rem;
   @extend .container;
 }
 
@@ -953,6 +957,14 @@ body {
 .page-action {
   @extend .container__col-22;
   @extend .container__col-offset-1;
+  border-radius: .5rem;
+}
+
+.modal-action {
+  @extend .container__col-12;
+  @extend .container__col-offset-6;
+  @extend .container__col-md-6;
+  @extend .container__col-md-offset-9;
   border-radius: .5rem;
 }
 
