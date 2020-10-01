@@ -25,9 +25,8 @@ function Friend(props) {
                     {/* PUT USER ICON HERE */}
                     <UserIcon className="m-h-auto" height="1.5rem" width="1.5rem"/>
                 </div>
-                <div className="snapshot-info">
+                <div className="snapshot-info m-t-50">
                     <h1 className="body-blue">{friendName}</h1>
-                    <h2 className="caption-blue m-t-50">@{friendName}</h2>
                 </div>
             </div>
             <div className="snapshot-action">

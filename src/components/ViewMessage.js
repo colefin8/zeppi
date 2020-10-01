@@ -18,6 +18,7 @@ function ViewMessage() {
     const [result, setResult] = useState({})
     const {message, sender_name} = result
     const {userId, totalLoot} = user
+    const [failed, setFail] = useState()
 
     useEffect(() => {
         const lootId = message_id
@@ -27,7 +28,7 @@ function ViewMessage() {
                 setResult(res.data[0])
                 setMatch(true)
                }
-            }).catch(err => console.log(err))
+            }).catch(setFail(true))
         }
     }, [message_id, lat, long, latitude, longitude])
 
@@ -45,10 +46,15 @@ function ViewMessage() {
         
     }
 
+    const back = () => {
+        history.push(`/loot`)
+    }
+
     return (
         <div className="ViewMessage dashboard-page">
             {console.log(match, latitude, lat, longitude, long)}
-        {match === true ? (
+        
+        { match === true ? (
             <div className="page-container">
                 <div className="page-title">
                     <h1 className="title-white">View Message</h1>
@@ -80,8 +86,18 @@ function ViewMessage() {
                     </div>
 
                 </div>
-            </div>
-        ) : <LoadingPopup messageFound={true} isLoading={!match}/>}
+
+            </div> )
+            : failed === true ? (
+            <div>
+                <h2>Your location didn't match. Check your position and try again!</h2>
+                <br/>
+                <button onClick={back}>BACK</button>
+            </div> )
+            :
+            <LoadingPopup messageFound={true} isLoading={!match}/> 
+            }
+
         </div>
         
 

@@ -13,10 +13,10 @@ module.exports = {
         const newUser = await db.create_user([username, firstName, lastName, phone, email, hash])
         req.session.user = {
         userId: newUser[0].user_id,
-        userName: newUser[0].user_name,
+        username: newUser[0].user_name,
         firstName: newUser[0].first_name,
         lastName: newUser[0].last_name,
-        phoneNumber: newUser[0].phone_number,
+        phone: newUser[0].phone_number,
         email: newUser[0].email,
         message: newUser[0].message,
         totalLoot: newUser[0].total_loot,

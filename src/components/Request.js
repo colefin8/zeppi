@@ -19,9 +19,8 @@ function Request(props) {
                     {/* PUT USER ICON HERE */}
                     <UserIcon className="m-h-auto" height="1.5rem" width="1.5rem"/>
                 </div>
-                <div className="snapshot-info">
-                    <h1 className="body-blue">Username</h1>
-                    <h2 className="caption-blue m-t-50">@{user_name}</h2>
+                <div className="snapshot-info m-t-50">
+                    <h1 className="body-blue">{user_name}</h1>
                 </div>
             </div>
             <div className="snapshot-action">
