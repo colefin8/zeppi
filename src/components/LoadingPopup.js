@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LoadingPlanes from '../assets/Planes/LoadingPlanes/LoadingPlanes';
 
 
@@ -13,7 +13,7 @@ function LoadingPopup(props) {
                 </div>
                 <div className="flex justify-center">
                     {messageFound ? 
-                        <p className="phrase-white m-v-2 m-r-1">Searching nearby for your message...</p>
+                        <p className="phrase-white m-v-2 m-r-1">Checking your location...</p>
                     :   <p className="phrase-white m-v-2 m-r-1">Rerouting!</p>
                     }
                 </div>
