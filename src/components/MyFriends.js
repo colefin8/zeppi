@@ -27,8 +27,11 @@ function MyFriends() {
     const accept = (friendId, userId) => {
         axios.put(`/friends/accept/${friendId}/${userId}`).then(res => {
             dispatch(getFriends(res.data))
-            axios.get(`/friends/request/${userId}`).then(res => {
-                dispatch(getRequests(res.data))
+            axios.get(`/friends/all/${userId}`).then(res => {
+                dispatch(getFriends(res.data))
+                axios.get(`/friends/request/${userId}`).then(res => {
+                    dispatch(getRequests(res.data))
+                }).catch(err => console.log(err))
             }).catch(err => console.log(err))
         }).catch(err => console.log(err))
         
