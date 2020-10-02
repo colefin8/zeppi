@@ -81,7 +81,7 @@ const LeafletMap = () => {
         e.preventDefault();
         const map = mapRef.current;
         if (map != null) {
-          map.leafletElement.locate({enableHighAccuracy: true, setView: true, watch: false, maxZoom: 12});
+          map.leafletElement.locate({enableHighAccuracy: true, setView: true, watch: false, maxZoom: 20});
         }
     }  
 
