@@ -5,20 +5,20 @@ function CloudSpan(props) {
   	return (
 		<svg 
 			viewBox="0 0 1920 452.3" 
-			className="CloudSpan"
+			className="CloudSpan cloudShadow"
 			{...props}
 		>
 			<style />
 			<defs>
 				{/* Back row left side */}
-				<filter id="cloudFilter4" class="cloudShadow" x="0" y="0" width="200%" height="200%">
+				<filter id="cloudFilter4" class="cloudShadow" width="200%" height="200%">
 					<feOffset result="offOut" in="SourceGraphic" dx="0" dy="-15" />
 					<feColorMatrix result="matrixOut" in="offOut" type="matrix"
 					values="0.23137254901960785,0,0,0,0,0,0.4980392156862745,0,0,0,0,0,0.7490196078431373,0,0,0,0,0,.45,0" />
 					<feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="10" />
 					<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
 				</filter>			
-				<filter id="cloudFilter" class="cloudShadow" x="0" y="0" width="200%" height="200%">
+				<filter id="cloudFilter" class="cloudShadow" width="200%" height="200%">
 					<feOffset result="offOut" in="SourceGraphic" dx="0" dy="-15" />
 					<feColorMatrix result="matrixOut" in="offOut" type="matrix"
 					values="0.3607843137254902,0,0,0,0,0,0.5098039215686274,0,0,0,0,0,0.6039215686274509,0,0,0,0,0,.45,0" />

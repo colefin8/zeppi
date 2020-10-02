@@ -79,7 +79,7 @@ const NewMessageModal = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="page-action"> 
+                    <div className="modal-action"> 
                         <button className="btn-lg-red page-btn m-b-3" onClick={newMessage}>ADD DROP</button>
                     </div>
                 </div>

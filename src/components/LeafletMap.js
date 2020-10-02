@@ -125,7 +125,7 @@ const LeafletMap = () => {
                 <ZoomControl position="topright"/>
                 {/* Control Button to display users current location once it is clicked */}
                 <Control position="topright" >
-                    <CurrentLocation onClick={e => handleClick(e)}/>       
+                    <CurrentLocation className={userLocation.hasLocation === true ? "color-blue" : "color-dark-blue"}onClick={e => handleClick(e)}/>       
                 </Control>
                 {/* Drag and Drop Drop icon allowing the user to add a new drop from the map functions much like google street view */}
                 <Control position="topright" draggable={true} onDragOver={e => console.log("onDragOver", e)} onDragStart={e => console.log("onDragStart", e)}  onDragEnd={e => console.log("onDragEnd", e)}>
@@ -158,7 +158,7 @@ const LeafletMap = () => {
                         <Popup key={lootMessage.id}>
                             Loot!<br/>
                             From: {lootMessage.sender_name} <br/>
-                            <div className='flex justify-center m-t-50'><ExpandAltIcon color="#ffd900" onClick={e => view(lootMessage.message_id)}/></div>
+                            <div className='flex justify-center m-t-50'><ExpandAltIcon color="#FF3C3C" onClick={e => view(lootMessage.message_id)}/></div>
                         </Popup>
                     </Marker>
                 ))}
