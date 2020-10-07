@@ -10,8 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      {(location.pathname !== '/' && location.pathname !== '/signup' && location.pathname !== '/login') ? <Navbar/> : null}
-      {routes}
+    Cole wuz here
     </div>
   );
 }
